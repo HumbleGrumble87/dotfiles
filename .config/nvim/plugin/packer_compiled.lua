@@ -74,10 +74,20 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["cisco.vim"] = {
+    loaded = true,
+    path = "/home/humble/.local/share/nvim/site/pack/packer/start/cisco.vim",
+    url = "https://github.com/momota/cisco.vim"
+  },
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/home/humble/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
+  },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/humble/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
   },
   ["onedarker.nvim"] = {
     loaded = true,
