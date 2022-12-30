@@ -58,7 +58,7 @@ return packer.startup(function(use)
   use "lunarvim/onedarker.nvim" -- saw this on Chris's YT channel
   use "lunarvim/darkplus.nvim" -- same as above
   use "lunarvim/tokyonight.nvim" -- same as above
-
+  use "ellisonleao/gruvbox.nvim" -- good for terminal theme 
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
