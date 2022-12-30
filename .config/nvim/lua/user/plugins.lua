@@ -59,6 +59,8 @@ return packer.startup(function(use)
   use "lunarvim/darkplus.nvim" -- same as above
   use "lunarvim/tokyonight.nvim" -- same as above
   use "ellisonleao/gruvbox.nvim" -- good for terminal theme 
+  use "famiu/bufdelete.nvim" -- to keep windows intact while i unload buffers
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
