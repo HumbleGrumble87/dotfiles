@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/jpg/.config/nvim/lua/user'
+let g:netrw_dirhist_6='/home/jpg/.config/nvim/lua'
+let g:netrw_dirhist_5='/home/jpg/.config/nvim'
+let g:netrw_dirhist_4='/home/jpg/.config'
+let g:netrw_dirhist_3='/home/jpg'
+let g:netrw_dirhist_2='/home/jpg/configs/aggs'
+let g:netrw_dirhist_1='/home/jpg/configs'
+let g:netrw_dirhist_0='/home/jpg/notes'
+let g:netrw_dirhist_9='/home/jpg'
+let g:netrw_dirhist_8='/home/jpg/notes'

@@ -1,0 +1,46 @@
+l2vpn
+bridge group CLEC
+bridge-domain ITOPS_MANITOWOC_RETAIL_839
+mtu 9000
+interface Bundle-Ether10.839
+storm-control unknown-unicast pps 50
+storm-control multicast pps 50
+storm-control broadcast pps 50
+!
+interface GigabitEthernet350/0/0/9.839
+storm-control unknown-unicast pps 50
+storm-control multicast pps 50
+storm-control broadcast pps 50
+!
+interface GigabitEthernet100/0/0/39.839
+!
+neighbor 10.46.1.95 pw-id 121819
+pw-class mpls_csr
+
+
+
+
+l2vpn
+bridge group CLEC
+bridge-domain ITOPS_MANITOWOC_RETAIL_739
+mtu 9000
+interface Bundle-Ether11.739
+storm-control unknown-unicast pps 50
+storm-control multicast pps 50
+storm-control broadcast pps 50
+!
+interface TenGigE0/4/0/2/8.739
+storm-control unknown-unicast pps 50
+storm-control multicast pps 50
+storm-control broadcast pps 50
+!
+interface GigabitEthernet300/0/0/8.739
+storm-control unknown-unicast pps 50
+storm-control multicast pps 50
+storm-control broadcast pps 50
+!
+interface GigabitEthernet101/0/0/39.739
+!
+neighbor 10.46.1.95 pw-id 121819
+pw-class mpls_csr
+

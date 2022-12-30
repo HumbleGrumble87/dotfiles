@@ -1,0 +1,55 @@
+# the word 'bind' at the start of a line is an alias for the command 'bind-key, just FYI'
+unbind C-b
+set -g prefix C-Space #C-a
+
+unbind r
+bind-key r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+
+# split windows with prefix v and h
+unbind v
+unbind h
+unbind % # Split vertically
+unbind '"' # Split horizontally
+bind-key v split-window -h -c "#{pane_current_path}"
+bind-key h split-window -v -c "#{pane_current_path}"
+
+
+#switch panes without prefix, just ctrl+[hjkl]
+bind-key -n C-h select-pane -R
+bind-key -n C-j select-pane -U
+bind-key -n C-k select-pane -L
+bind-key -n C-l select-pane -D
+
+#move windows with prefix, as well as ctrl+[hjkl] 
+bind-key C-k select-window -t -1 # switch windows left and right
+bind-key C-h select-window -t +1
+bind-key C-j swap-window -t -1 # position the windows left and right
+bind-key C-l swap-window -t +1
+
+#so i can go to beginning of line
+bind-key a send-prefix # this is out of service if vi-mode for zsh is on | that uses $ and ^ to move to front and back of text
+
+#Copy-Mode-Vi keybind fixes, because vim navigation is easier
+setw -g mode-keys vi
+bind-key  -T copy-mode-vi  l  send-keys Down
+bind-key  -T copy-mode-vi  j  send-keys Up
+bind-key  -T copy-mode-vi  k  send-keys Left
+bind-key  -T copy-mode-vi  h  send-keys Right
+
+# copy and paste - we make use of copy-pipe-cancel so that when we "yank", it automagically copies to clipboard and closes tmux-copy session
+unbind-key -T copy-mode-vi v # It's important to unbind default rectangle-toggle binding, otherwise new 'C-v' key dosen't work
+bind-key -T copy-mode-vi 'v' send -X begin-selection     # Begin selection in copy mode.
+bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle  # Begin selection in copy mode.
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard" # Yank selection in copy mode.
+bind-key P paste-buffer
+# bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel #uncomment this if you want mouse support, but mouse supports FUCKS other shit up so i'd recommend not doing that
+
+
+# status line | because I'm a silly boi
+run-shell "~/.tmux/themes/nord-tmux/nord.tmux"
+
+#for working in networking equipment (poor man's scroll)
+unbind y
+bind-key C-y send-keys "\n\n\n\n\n\n\n\n\n\n" # this is for my terminal, basically hitting enter a whole bunch of times. useful for configs in a router.
+
+

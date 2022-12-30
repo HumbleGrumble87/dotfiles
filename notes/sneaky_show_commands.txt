@@ -1,0 +1,19 @@
+show commit changes diff
+show run form | i 
+xr: show run [section] ----- xe: show run | s [section]
+show isis database | i 1/0  (finds directly connected ISIS neighbors)
+
+**L2 VPN**
+  *VFI - think VPLS
+  *AC or VC - think VPWS
+  XE 
+    show mpls l2transport vc [number] detail
+    show run | section l2 vfi
+    show bridge-domain [pw-id,vpnid,vc] detail (these are all the same term for same thing)
+    bridge-domain Tech_Access_GB_1
+    Remember that this is the old TECH ACCESS domain: pw-id 6012
+  XR
+    show l2vpn bridge-domain pw-id [number] 
+    or
+    show l2vpn bridge-domain group [group] bd-name [name]
+    show run l2vpn bridge group [name] bridge-domain [name]

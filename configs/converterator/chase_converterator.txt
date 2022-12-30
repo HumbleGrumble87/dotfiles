@@ -1,0 +1,649 @@
+PS /opt/920-540-converterator> Get-L2vpnServices -CutoverCSV /opt/920-540-converterator/ch
+chase.csv    chilton.csv
+PS /opt/920-540-converterator> Get-L2vpnServices -CutoverCSV /opt/920-540-converterator/chase.csv -User jpg
+
+PowerShell credential request
+Enter your credentials.
+Password for user jpg: *********
+
+Transcript started, output file is .//opt/920-540-converterator/chase.csv.log
+Testing Authentication to NSO
+{'status': 'failed', 'reason': 'Device CA2CHASE0BF1 already exists in NSO', 'IP': '10.46.0.248', 'NED': 'cisco-iosxr-cli-7.39', 'DESCRIPTION': 'Chase NCS540-ACC-SYS 1'}
+
+NSO - XE Check Sync
+output
+------
+output
+output
+Syncing CA2CHASE0B11
+Etool - Getting Device IDs
+NSO - XE Get Config
+Config - XE Get VFIs
+Removed 0/0/11 3491
++ FIXED BNG Sobieski Hilbert Rd B6-252 1 - 110147
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/12 3492
++ FIXED BNG Sobieski Hilbert Rd B6-252 2 - 110150
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/13 3493
++ FIXED BNG Sobieski Hilbert Rd B6-256 1 - 110153
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/11 1032
++ EVC Pulaski East - Hilbert IPTV - VLAN 1032
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/12 1032
++ EVC Pulaski East - Hilbert IPTV - VLAN 1032
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/13 1032
++ EVC Pulaski East - Hilbert IPTV - VLAN 1032
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/6 2003
++ LRA_OAM Chase eNB - 104193
+Reason: CLTE Nano
+Removed 0/0/11 103
++ EVC Pulaski East - Hilbert Voice  - VLAN 103
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/12 103
++ EVC Pulaski East - Hilbert Voice  - VLAN 103
+Reason: Not connected to Agg / Service Agg
+Removed 0/0/13 103
++ EVC Pulaski East - Hilbert Voice  - VLAN 103
+Reason: Not connected to Agg / Service Agg
+Config - XE Get xconnects
+NSO - Peer Check Sync
+CA0DRNETBA21
+output
+Syncing CA0DRNETBA21
+CA0GRYCRTA21
+output
+Syncing CA0GRYCRTA21
+CB8DRNETBA31
+output
+Syncing CB8DRNETBA31
+CB8GRYCRTA31
+output
+Syncing CB8GRYCRTA31
+NSO - Peer Get Configs
+CA0DRNETBA21
+CA0GRYCRTA21
+CB8DRNETBA31
+CB8GRYCRTA31
+Config - Get bridge domains and Interface data
+0/0/12_41
+0/0/1_10
+0/0/4_10
+0/0/5_10
+0/0/13_41
+0/0/11_41
+0/0/0_1
+0/0/6_5
+/bin/mkdir: cannot create directory ‘/opt/920-540-converterator/Reports/’: File exists
+output
+Syncing CA2CHASE0BF1
+output
+Syncing CA0GRYCRTA21
+output
+Syncing CA0DRNETBA21
+l2vpn
+bridge group Cellcom_EVDO
+bridge-domain RSA4_EVDO-1
+vfi 2497
+neighbor 10.46.0.248 pw-id 2497
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Cellcom_EVDO
+bridge-domain RSA4_EVDO-1
+vfi 2497
+neighbor 10.46.0.248 pw-id 2497
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+interface GigabitEthernet 0/0/0/1
+description "EVDO Chase EVDO DOM 1 - 104378"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/1.1 l2transport
+description "EFP EVDO Chase EVDO DOM 1 - 104378"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Cellcom_EVDO
+bridge-domain RSA4_EVDO-1
+mtu 1500
+interface GigabitEthernet0/0/0/1.1
+exit
+vfi 2497
+neighbor 10.43.52.1 pw-id 2497
+pw-class mpls_csr
+exit
+neighbor 10.43.52.2 pw-id 2497
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CB8GRYCRTA31
+output
+Syncing CB8DRNETBA31
+interface GigabitEthernet 0/0/0/4
+description "IPBH Chase (279) 10M CDMA 01 - 109333"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/4.1 l2transport
+description "EFP IPBH Chase (279) 10M CDMA 01 - 109333"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Cellcom_IPBH
+bridge-domain IPBH_GREEN_BAY_AGG
+mtu 1500
+interface GigabitEthernet0/0/0/4.1
+exit
+vfi 5905
+neighbor 10.43.52.10 pw-id 5905
+pw-class mpls_csr
+exit
+neighbor 10.43.52.9 pw-id 5905
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Cellcom_IPBH
+bridge-domain IPBH_GREEN_BAY_AGG
+vfi 5905
+neighbor 10.46.0.248 pw-id 5905
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Cellcom_IPBH
+bridge-domain IPBH_GREEN_BAY_AGG
+vfi 5905
+neighbor 10.46.0.248 pw-id 5905
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CB8GRYCRTA31
+output
+Syncing CB8DRNETBA31
+Invoke-RestMethod : {
+"ietf-restconf:errors": {
+"error": [
+{
+"error-type": "application",
+"error-tag": "malformed-message",
+"error-path": "",
+"error-message": "invalid value for: mtu in /multi-l2vpn:multi-l2vpn[multi-l2vpn:circuit_id='979700111']/multi-l2vpn:service_config/multi-l2vpn:mtu: \"\" is not a valid value."
+}
+]
+}
+}
+At /opt/920-540-converterator/nsight-conversion.psm1:1113 char:26
++ ... UT_DryRun = Invoke-RestMethod @Params -AllowUnencryptedAuthentication ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : InvalidOperation: (Method: POST, Reque\u2026n/yang-data+json
+}:HttpRequestMessage) [Invoke-RestMethod], HttpResponseException
++ FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeRestMethodCommand
+interface GigabitEthernet 0/0/0/4
+description "IPBH Chase (279) 10M CDMA 01 - 109333"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/4.1 l2transport
+description "EFP IPBH Chase (279) 10M CDMA 01 - 109333"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Cellcom_IPBH
+bridge-domain IPBH_GREEN_BAY_AGG
+mtu 1500
+interface GigabitEthernet0/0/0/4.1
+exit
+vfi 5905
+neighbor 10.43.52.10 pw-id 5905
+pw-class mpls_csr
+exit
+neighbor 10.43.52.9 pw-id 5905
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Cellcom_IPBH
+bridge-domain IPBH_GREEN_BAY_AGG
+vfi 5905
+neighbor 10.46.0.248 pw-id 5905
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Cellcom_IPBH
+bridge-domain IPBH_GREEN_BAY_AGG
+vfi 5905
+neighbor 10.46.0.248 pw-id 5905
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CA0GRYCRTA21
+output
+Syncing CA0DRNETBA21
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+vfi 6033
+neighbor 10.46.0.248 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+vfi 6033
+neighbor 10.46.0.248 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+interface GigabitEthernet 0/0/0/5
+description "MGMT Chase CXCI"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/5.1 l2transport
+description "EFP MGMT Chase CXCI"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+mtu 1500
+interface GigabitEthernet0/0/0/5.1
+exit
+vfi 6033
+neighbor 10.43.52.1 pw-id 6033
+pw-class mpls_csr
+exit
+neighbor 10.43.52.2 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CB8GRYCRTA31
+output
+Syncing CB8DRNETBA31
+Invoke-RestMethod : {
+"ietf-restconf:errors": {
+"error": [
+{
+"error-type": "application",
+"error-tag": "malformed-message",
+"error-path": "",
+"error-message": "invalid value for: mtu in /multi-l2vpn:multi-l2vpn[multi-l2vpn:circuit_id='979700463']/multi-l2vpn:service_config/multi-l2vpn:mtu: \"\" is not a valid value."
+}
+]
+}
+}
+At /opt/920-540-converterator/nsight-conversion.psm1:1113 char:26
++ ... UT_DryRun = Invoke-RestMethod @Params -AllowUnencryptedAuthentication ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : InvalidOperation: (Method: POST, Reque\u2026n/yang-data+json
+}:HttpRequestMessage) [Invoke-RestMethod], HttpResponseException
++ FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeRestMethodCommand
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+vfi 6033
+neighbor 10.46.0.248 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+vfi 6033
+neighbor 10.46.0.248 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+interface GigabitEthernet 0/0/0/5
+description "MGMT Chase CXCI"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/5.1 l2transport
+description "EFP MGMT Chase CXCI"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+mtu 1500
+interface GigabitEthernet0/0/0/5.1
+exit
+vfi 6033
+neighbor 10.43.52.1 pw-id 6033
+pw-class mpls_csr
+exit
+neighbor 10.43.52.2 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CB8GRYCRTA31
+output
+Syncing CB8DRNETBA31
+Invoke-RestMethod : {
+"ietf-restconf:errors": {
+"error": [
+{
+"error-type": "application",
+"error-tag": "malformed-message",
+"error-path": "",
+"error-message": "invalid value for: mtu in /multi-l2vpn:multi-l2vpn[multi-l2vpn:circuit_id='979700465']/multi-l2vpn:service_config/multi-l2vpn:mtu: \"\" is not a valid value."
+}
+]
+}
+}
+At /opt/920-540-converterator/nsight-conversion.psm1:1113 char:26
++ ... UT_DryRun = Invoke-RestMethod @Params -AllowUnencryptedAuthentication ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : InvalidOperation: (Method: POST, Reque\u2026n/yang-data+json
+}:HttpRequestMessage) [Invoke-RestMethod], HttpResponseException
++ FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeRestMethodCommand
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+vfi 6033
+neighbor 10.46.0.248 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+vfi 6033
+neighbor 10.46.0.248 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+interface GigabitEthernet 0/0/0/5
+description "MGMT Chase CXCI"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/5.1 l2transport
+description "EFP MGMT Chase CXCI"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Eng_Networks
+bridge-domain Mgmt-8
+mtu 1500
+interface GigabitEthernet0/0/0/5.1
+exit
+vfi 6033
+neighbor 10.43.52.1 pw-id 6033
+pw-class mpls_csr
+exit
+neighbor 10.43.52.2 pw-id 6033
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CA0GRYCRTA21
+output
+Syncing CA0DRNETBA21
+l2vpn
+bridge group Eng_Networks
+bridge-domain Tech_Access-1
+vfi 6012
+neighbor 10.46.0.248 pw-id 6012
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Eng_Networks
+bridge-domain Tech_Access-1
+vfi 6012
+neighbor 10.46.0.248 pw-id 6012
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+interface GigabitEthernet 0/0/0/0
+description "MGMT Tech Access"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/0.1 l2transport
+description "EFP Tech_Access-1"
+encapsulation untagged
+no shutdown
+exit
+l2vpn
+bridge group Eng_Networks
+bridge-domain Tech_Access-1
+mtu 2000
+interface GigabitEthernet0/0/0/0.1
+exit
+vfi 6012
+neighbor 10.43.52.1 pw-id 6012
+pw-class mpls_csr
+exit
+neighbor 10.43.52.2 pw-id 6012
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+
+
+
+output
+Syncing CB8GRYCRTA31
+output
+Syncing CB8DRNETBA31
+interface GigabitEthernet 0/0/0/6
+description "MOCN LTE-700 LRA CLTE Chase (936010) 104192-104193-121071"
+mtu 9000
+no shutdown
+load-interval 30
+exit
+interface GigabitEthernet 0/0/0/6.5 l2transport
+description "Eng_Networks:NanoNID_LTE_GB_2 - LRA Chase"
+encapsulation dot1q 5
+service-policy input PMAP_CELLCOM_LTE_I
+service-policy output PMAP_CELLCOM_LTE_E
+no shutdown
+rewrite ingress tag pop 1 symmetric
+exit
+l2vpn
+bridge group Eng_Networks
+bridge-domain NanoNID_LTE_GB_2
+mtu 1500
+interface GigabitEthernet0/0/0/6.5
+exit
+vfi 6006
+neighbor 10.43.52.10 pw-id 6006
+pw-class mpls_csr
+exit
+neighbor 10.43.52.9 pw-id 6006
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Eng_Networks
+bridge-domain NanoNID_LTE_GB_2
+vfi 6006
+neighbor 10.46.0.248 pw-id 6006
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+l2vpn
+bridge group Eng_Networks
+bridge-domain NanoNID_LTE_GB_2
+vfi 6006
+neighbor 10.46.0.248 pw-id 6006
+pw-class mpls_csr
+exit
+exit
+exit
+exit
+exit
+
+
+
+
+#########################################
+

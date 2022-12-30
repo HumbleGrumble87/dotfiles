@@ -1,0 +1,1102 @@
+version 17.6
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime
+service timestamps log datetime localtime
+service password-encryption
+service call-home
+service unsupported-transceiver
+no platform punt-keepalive disable-kernel-core
+platform bfd-debug-trace 1
+platform xconnect load-balance-hash-algo mac-ip-instanceid
+platform tcam-parity-error enable
+platform tcam-threshold alarm-frequency 1
+!
+hostname CF7WESRTSB11
+!
+boot-start-marker
+boot system bootflash:asr920-universalk9_npe.17.06.04.SPA.bin
+boot-end-marker
+!
+shell processing full
+!
+vrf definition CLTE_S1_WAUS
+rd 3663:5300
+!
+address-family ipv6
+route-target export 3663:5314
+route-target import 3663:5300
+route-target import 3663:5314
+exit-address-family
+!
+vrf definition ENG
+rd 3663:7010
+!
+address-family ipv4
+route-target export 3663:7010
+route-target import 3663:7000
+route-target import 3663:7010
+maximum routes 50000 warning-only
+exit-address-family
+!
+address-family ipv6
+route-target export 3663:7010
+route-target import 3663:7000
+route-target import 3663:7010
+maximum routes 50000 warning-only
+exit-address-family
+!
+vrf definition Mgmt-intf
+!
+address-family ipv4
+exit-address-family
+!
+address-family ipv6
+exit-address-family
+!
+vrf definition PUBLIC
+rd 3663:8004
+!
+address-family ipv4
+route-target export 3663:8004
+route-target import 3663:8001
+exit-address-family
+!
+address-family ipv6
+route-target export 3663:8004
+route-target import 3663:8001
+exit-address-family
+!
+logging buffered 100000
+no logging console
+enable secret 9 $9$jSAYIVqnqXTeYh$g8/DknNvzbxpHIkA/tRPjImuPNsFGIEAxS2rqooGPG6
+!
+aaa new-model
+!
+!
+aaa group server tacacs+ nsight-ise
+server-private 10.43.83.125 timeout 10 key 7 065A0C736641545F303A355C1F477B78757C62600317061B
+server-private 10.43.34.125 timeout 10 key 7 065A0C736641545F303A355C1F477B78757C62600317061B
+ip tacacs source-interface Loopback0
+!
+aaa authentication login default group nsight-ise local
+aaa authentication login CONSOLE group nsight-ise local
+aaa authorization console
+aaa authorization config-commands
+aaa authorization exec default group nsight-ise local
+aaa authorization commands 15 default group nsight-ise local
+aaa accounting send stop-record authentication failure
+aaa accounting exec default start-stop group nsight-ise
+!
+!
+!
+!
+!
+!
+aaa session-id common
+ethernet cfm ieee
+ethernet cfm global
+ethernet cfm domain Spectrum level 2
+mip auto-create
+service NNI100 evc NNI1111 vlan 1111 direction down
+continuity-check
+continuity-check interval 100ms
+continuity-check loss-threshold 5
+service NNI101 evc NNI1611 vlan 1611 direction down
+continuity-check
+continuity-check interval 100ms
+continuity-check loss-threshold 5
+!
+ethernet cfm logging
+ethernet evc NNI1111
+!
+ethernet evc NNI1611
+!
+clock timezone cst -6 0
+clock summer-time CDT recurring
+ip spd mode aggressive
+ip spd queue max-threshold 999
+ip spd queue min-threshold 998
+!
+!
+!
+!
+!
+!
+!
+ip name-server 10.43.6.2 10.43.6.10
+ip domain timeout 2
+ip domain lookup source-interface Loopback0
+ip domain name eng.nsight.com
+!
+!
+!
+login block-for 120 attempts 3 within 60
+login quiet-mode access-class mgmt_networks
+login on-failure log
+login on-success log
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+mpls label mode all-vrfs protocol bgp-vpnv4 per-vrf
+mpls label protocol ldp
+no mpls ip propagate-ttl forwarded
+mpls ip default-route
+mpls ldp nsr
+mpls ldp loop-detection
+mpls ldp explicit-null
+mpls ldp graceful-restart
+mpls ldp session protection
+mpls ldp igp sync holddown 30
+mpls ldp label
+allocate global prefix-list PFX_MPLS_LDP_ALLOW
+mpls ldp discovery targeted-hello accept
+multilink bundle-name authenticated
+l2vpn
+logging pseudowire status
+logging redundancy
+!
+!
+key chain mpls_net_key
+key 1
+key-string 7 020851520C0E1B
+!
+crypto pki trustpoint SLA-TrustPoint
+enrollment terminal
+revocation-check crl
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+certificate ca 01
+30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030
+32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363
+6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934
+3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305
+43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720
+526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030
+82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D
+CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520
+1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE
+4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC
+7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188
+68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7
+C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191
+C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44
+DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201
+06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85
+4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500
+03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905
+604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B
+D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8
+467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C
+7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B
+5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678
+80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB
+418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0
+D697DF7F 28
+quit
+!
+license udi pid ASR-920-24SZ-IM sn CAT2341V0K8
+license boot level advancedmetroipaccess
+license smart enable
+license smart transport callhome
+archive
+log config
+logging enable
+logging size 1000
+memory free low-watermark processor 5140
+!
+!
+!
+!
+!
+object-group network NETCONF_MGMT
+host 10.43.30.65
+host 10.46.224.94
+!
+!
+spanning-tree extend system-id
+sdm prefer default
+diagnostic bootup level minimal
+!
+username tech privilege 15 secret 9 $9$d2MEXstAbWk2AE$0tgG4XDTmWWKmy5Tnbfq6P1wfRh8bsDwxZmns6Xwt.w
+!
+redundancy
+!
+!
+!
+transceiver type all
+monitoring
+cdp run
+!
+!
+class cem t1_pwe
+payload-size 192
+dejitter-buffer 5
+!
+!
+class-map match-any CMAP_VID_E
+description Priority Subscriber
+match qos-group 2
+class-map match-any CMAP_LTE_VID_E
+description LTE Video Traffic
+match qos-group 2
+class-map match-any CMAP_MGT_E
+description Network Mgmt
+match qos-group 7
+class-map match-any CMAP_LTE_SIG_E
+description LTE Signalling Traffic
+match qos-group 4
+class-map match-any CMAP_NCP_E
+description Network NCP
+match qos-group 6
+match dscp cs6
+class-map match-any CMAP_SIG_E
+description Signaling
+match qos-group 4
+class-map match-any CMAP_MGT_I
+description Network Mgmt
+match mpls experimental topmost 7
+class-map match-any CMAP_LTE_SIG_I
+description LTE Signalling Traffic
+match dscp cs4
+match cos  4
+class-map match-any CMAP_NCP_I
+description Network NCP
+match mpls experimental topmost 6
+match dscp cs6
+class-map match-any CMAP_SIG_I
+description Signaling
+match mpls experimental topmost 4
+class-map match-all CMAP_DIA
+match qos-group 20
+class-map match-any CMAP_VID_I
+description Subscriber
+match mpls experimental topmost 2
+class-map match-any CMAP_LTE_VID_I
+description LTE Video Traffic
+match dscp cs3
+match cos  3
+class-map match-any CMAP_LTE_SUB_I
+description LTE Subscriber Traffic
+match dscp cs2
+match cos  2
+class-map match-any CMAP_LTE_OAM_I
+description LTE OAM Traffic
+match cos  7
+match dscp cs7
+class-map match-any CMAP_LTE_OAM_E
+description LTE OAM Traffic
+match qos-group 7
+class-map match-any CMAP_LTE_SUB_E
+description LTE Subscriber Traffic
+match qos-group 3
+class-map match-any CMAP_RT_I
+description Real Time
+match mpls experimental topmost 5
+class-map match-any CMAP_SCAV_I
+description Scavenger
+match mpls experimental topmost 1
+class-map match-any CMAP_BE_I
+description Business Critical
+match mpls experimental topmost 0
+class-map match-any CMAP_LTE_RT_I
+description LTE Realtime Traffic
+match dscp ef
+match cos  5
+class-map match-any CMAP_BC_I
+description Business Critical
+match mpls experimental topmost 3
+class-map match-any CMAP_BC_E
+description Business Class
+match qos-group 3
+class-map match-any CMAP_RT_E
+description Real Time
+match qos-group 5
+class-map match-any CMAP_SCAV_E
+description Scavenger
+match qos-group 1
+class-map match-any CMAP_LTE_RT_E
+description LTE Realtime Traffic
+match qos-group 5
+!
+policy-map PMAP_NNI_E
+class CMAP_RT_E
+priority level 1
+police cir percent 33
+conform-action transmit
+exceed-action drop
+class CMAP_NCP_E
+bandwidth percent 3
+class CMAP_MGT_E
+bandwidth percent 3
+class CMAP_SIG_E
+bandwidth percent 10
+class CMAP_BC_E
+bandwidth percent 20
+class CMAP_VID_E
+bandwidth percent 10
+class CMAP_SCAV_E
+bandwidth percent 1
+queue-limit 15000 us
+class class-default
+bandwidth percent 20
+queue-limit 15000 us
+policy-map PMAP_NNI_PRNT_E
+class class-default
+shape average 300000000
+service-policy PMAP_NNI_E
+policy-map PMAP_P2P_20M_E
+class CMAP_DIA
+class class-default
+shape average 20000000
+queue-limit 15000 us
+policy-map PMAP_P2P_20M_I
+class class-default
+police cir 20000000 bc 3750000
+conform-action set-qos-transmit 0
+conform-action set-mpls-exp-imposition-transmit 0
+exceed-action drop
+policy-map PMAP_MGMT_I
+class class-default
+police 100000000 2000000
+set mpls experimental imposition 7
+policy-map PMAP_CELLCOM_LTE_I
+class CMAP_LTE_OAM_I
+set qos-group 7
+set mpls experimental imposition 7
+class CMAP_LTE_RT_I
+set qos-group 5
+set mpls experimental imposition 5
+class CMAP_LTE_SIG_I
+set qos-group 4
+set mpls experimental imposition 4
+class CMAP_LTE_VID_I
+set qos-group 2
+set mpls experimental imposition 2
+class CMAP_LTE_SUB_I
+set qos-group 3
+set mpls experimental imposition 3
+class class-default
+set qos-group 0
+set mpls experimental imposition 0
+policy-map PMAP_CELLCOM_LTE_E
+class CMAP_LTE_RT_E
+priority level 1
+police cir percent 30
+class CMAP_LTE_SIG_E
+bandwidth percent 10
+class CMAP_LTE_OAM_E
+bandwidth percent 1
+class CMAP_LTE_VID_E
+bandwidth percent 7
+class CMAP_LTE_SUB_E
+bandwidth percent 17
+queue-limit 15000 us
+class class-default
+bandwidth percent 35
+queue-limit 15000 us
+policy-map PMAP_NNI_I
+class CMAP_MGT_I
+set qos-group 7
+class CMAP_NCP_I
+set qos-group 6
+class CMAP_RT_I
+set qos-group 5
+class CMAP_SIG_I
+set qos-group 4
+class CMAP_BC_I
+set qos-group 3
+class CMAP_VID_I
+set qos-group 2
+class CMAP_SCAV_I
+set qos-group 1
+policy-map PMAP_DIA_200M_E
+class CMAP_DIA
+class class-default
+shape average 200000000
+queue-limit 15000 us
+policy-map PMAP_DIA_200M_I
+class class-default
+police cir 200000000 bc 16000000
+conform-action set-qos-transmit 0
+conform-action set-mpls-exp-imposition-transmit 0
+exceed-action drop
+!
+pseudowire-class mpls_csr
+encapsulation mpls
+control-word
+!
+pseudowire-class mpls_t1
+encapsulation mpls
+!
+l2 vfi ENG_ACCESS manual
+vpn id 106244
+bridge-domain 106
+mtu 9000
+neighbor 10.43.52.1 pw-class mpls_csr
+neighbor 10.43.52.2 pw-class mpls_csr
+!
+l2 vfi Eng_Networks:NanoNID_1 manual
+vpn id 6037
+bridge-domain 37
+neighbor 10.43.52.1 pw-class mpls_csr
+neighbor 10.43.52.2 pw-class mpls_csr
+!
+l2 vfi NanoNID_LTE_WAUS_2 manual
+vpn id 6006
+bridge-domain 606
+mtu 1500
+neighbor 10.43.52.5 pw-class mpls_csr
+neighbor 10.43.52.4 pw-class mpls_csr
+!
+l2 vfi SW_Mgmt_1 manual
+vpn id 6034
+bridge-domain 603
+mtu 1500
+neighbor 10.43.52.1 pw-class mpls_csr
+neighbor 10.43.52.2 pw-class mpls_csr
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+buffers small permanent 1000
+buffers small max-free 1375
+buffers small min-free 250
+!
+!
+!
+!
+interface Loopback0
+description Local Loopback
+ip address 10.46.0.64 255.255.255.255
+isis tag 1057
+!
+interface Loopback5147
+description Eng Monitoring
+vrf forwarding ENG
+ip address 10.50.211.106 255.255.255.255
+ip mtu 9000
+ipv6 address 2607:F430:4FF:3002::69/128
+!
+interface GigabitEthernet0/0/0
+description MGMT Tech Access
+mtu 9216
+no ip address
+negotiation auto
+no keepalive
+service-policy input PMAP_MGMT_I
+service instance 1 ethernet
+description EFP Tech_Access-1
+encapsulation untagged
+xconnect 10.43.52.1 6012 encapsulation mpls pw-class mpls_csr
+backup peer 10.43.52.2 6012 pw-class mpls_csr
+mtu 2000
+!
+!
+interface GigabitEthernet0/0/1
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/2
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/3
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/4
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/5
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/6
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/7
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/8
+description CLTE Weston Retail Store (910179) - 122382 122383
+mtu 9100
+no ip address
+load-interval 30
+negotiation auto
+no keepalive
+service-policy input PMAP_CELLCOM_LTE_I
+service-policy output PMAP_CELLCOM_LTE_E
+service instance 5 ethernet
+description Eng_Networks:NanoNID_LTE_WAUS_1 - CLTE Weston Retail Store (910179)
+encapsulation dot1q 5
+rewrite ingress tag pop 1 symmetric
+bridge-domain 606
+!
+service instance 1001 ethernet
+description OAM: CLTE Weston Retail Store (910179) - 122383
+encapsulation dot1q 1001
+rewrite ingress tag pop 1 symmetric
+bridge-domain 3101
+!
+service instance 2000 ethernet
+description S1: Weston Retail Store (910179) - 122382
+encapsulation dot1q 2000
+rewrite ingress tag pop 1 symmetric
+bridge-domain 2000
+!
+!
+interface GigabitEthernet0/0/9
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/10
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/11
+description CLEC ITOPS Cellcom Weston Retail VPWS v728 & v828 - 109304
+mtu 9216
+no ip address
+load-interval 30
+negotiation auto
+  service instance 5 ethernet
+  description EFP MGMT ITOPS NanoNID
+  encapsulation dot1q 5
+  rewrite ingress tag pop 1 symmetric
+  service-policy input PMAP_MGMT_I
+  bridge-domain 37
+  !
+  service instance 728 ethernet
+  description EFP CLEC ITOPS Cellcom Weston Retail 20M VPWS v728 - 109304
+  encapsulation dot1q 728
+  rewrite ingress tag pop 1 symmetric
+  service-policy input PMAP_P2P_20M_I
+  xconnect 10.43.52.1 109304 encapsulation mpls pw-class mpls_csr
+  mtu 9000
+  !
+  service instance 828 ethernet
+  description EFP CLEC ITOPS Cellcom Weston Retail 20M VPWS v828 - 109304
+  encapsulation dot1q 828
+  rewrite ingress tag pop 1 symmetric
+  service-policy input PMAP_P2P_20M_I
+  xconnect 10.43.52.2 109304 encapsulation mpls pw-class mpls_csr
+  mtu 9000
+!
+!
+interface GigabitEthernet0/0/12
+description CLEC ITOPS Cellcom Weston Retail 200M DIA - 109305
+mtu 9216
+no ip address
+load-interval 30
+negotiation auto
+no keepalive
+  service instance 5 ethernet
+  description EFP MGMT NanoNID
+  encapsulation dot1q 5
+  rewrite ingress tag pop 1 symmetric
+  service-policy input PMAP_MGMT_I
+  bridge-domain 37
+  !
+  service instance 2700 ethernet
+  description EFP CLEC ITOPS Cellcom Weston Retail 200M DIA - 109305
+  encapsulation untagged
+  service-policy input PMAP_DIA_200M_I
+  service-policy output PMAP_DIA_200M_E
+  bridge-domain 2700
+!
+!
+interface GigabitEthernet0/0/13
+description ENG Weston Retail C2960X
+mtu 9216
+no ip address
+load-interval 30
+negotiation auto
+cdp enable
+service instance 10 ethernet
+description EFP ENG Weston Retail C2960X
+encapsulation dot1q 10
+rewrite ingress tag pop 1 symmetric
+service-policy input PMAP_MGMT_I
+bridge-domain 603
+!
+service instance 279 ethernet
+description EFP ENG Weston Retail C2960X ENG_ACCESS
+encapsulation dot1q 279
+rewrite ingress tag pop 1 symmetric
+bridge-domain 106
+!
+!
+interface GigabitEthernet0/0/14
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/15
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/16
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/17
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/18
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/19
+description NNI CSC to Spectrum Spectrum ME3600; CHC00479121
+mtu 9000
+no ip address
+load-interval 30
+negotiation auto
+service-policy input PMAP_NNI_I
+service-policy output PMAP_NNI_PRNT_E
+service instance 1111 ethernet
+encapsulation dot1q 1111
+rewrite ingress tag pop 1 symmetric
+bridge-domain 1111
+!
+service instance 1611 ethernet
+encapsulation dot1q 1611
+rewrite ingress tag pop 1 symmetric
+bridge-domain 1611
+!
+!
+interface GigabitEthernet0/0/20
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/21
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/22
+no ip address
+shutdown
+negotiation auto
+!
+interface GigabitEthernet0/0/23
+no ip address
+shutdown
+negotiation auto
+!
+interface TenGigabitEthernet0/0/24
+no ip address
+shutdown
+!
+interface TenGigabitEthernet0/0/25
+no ip address
+shutdown
+!
+interface TenGigabitEthernet0/0/26
+no ip address
+shutdown
+!
+interface TenGigabitEthernet0/0/27
+no ip address
+shutdown
+!
+interface GigabitEthernet0
+description L3 OOB MGMT
+vrf forwarding Mgmt-intf
+ip address dhcp
+negotiation auto
+!
+interface BDI1111
+description L3 CSC to; Mosinee Hill Transport Agg ASR9006 1; Weston, WI; CHC00479121; CF7;
+ip address 10.46.37.30 255.255.255.254
+ip mtu 9000
+ip router isis mpls_net
+mpls ip
+bfd interval 250 min_rx 250 multiplier 3
+isis circuit-type level-1
+isis network point-to-point
+isis metric 100 level-1
+isis metric 100 level-2
+isis authentication mode md5
+isis authentication key-chain mpls_net_key
+isis tag 5555
+!
+interface BDI1611
+description L3 CSC to; WPS Sherman St Transport Agg ASR9006 1; Weston, WI; CHC00479121; CF7;
+ip address 10.46.37.32 255.255.255.254
+ip mtu 9000
+ip router isis mpls_net
+mpls ip
+bfd interval 250 min_rx 250 multiplier 3
+isis circuit-type level-1
+isis network point-to-point
+isis metric 114 level-1
+isis metric 114 level-2
+isis authentication mode md5
+isis authentication key-chain mpls_net_key
+isis tag 5555
+!
+interface BDI2000
+description S1: CLTE Weston Retail Store (910179)
+vrf forwarding CLTE_S1_WAUS
+no ip address
+ip mtu 9000
+ipv6 address 2607:F430:300:1397:343:412::/64
+ipv6 verify unicast source reachable-via rx
+!
+interface BDI2700
+description L3 CLEC ITOPS Cellcom Weston Retail 200M DIA - 109305
+vrf forwarding PUBLIC
+ip address 206.40.96.129 255.255.255.254
+ip mtu 9000
+ip verify unicast reverse-path allow-self-ping
+ipv6 address 2607:F430:1:20E::/64
+ipv6 verify unicast reverse-path allow-self-ping
+!
+interface BDI3101
+description OAM: CLTE Weston Retail Store (910179)
+vrf forwarding ENG
+ip address 10.48.65.242 255.255.255.252
+ip mtu 9000
+ip verify unicast source reachable-via rx
+!
+!
+segment-routing mpls
+!
+set-attributes
+address-family ipv4
+sr-label-preferred
+explicit-null
+exit-address-family
+!
+!
+connected-prefix-sid-map
+address-family ipv4
+10.46.0.64/32 absolute 16038 range 1
+exit-address-family
+!
+!
+router isis mpls_net
+net 49.0001.0100.4600.0064.00
+is-type level-1
+advertise passive-only
+metric-style wide
+fast-flood 10
+ip route priority high tag 1000
+set-overload-bit on-startup 60
+max-lsp-lifetime 65535
+lsp-refresh-interval 65000
+spf-interval 5 50 200
+prc-interval 5 50 200
+lsp-gen-interval 5 50 200
+no hello padding point-to-point
+log-adjacency-changes
+segment-routing mpls
+fast-reroute per-prefix level-1 route-map RMAP_MPLS_FRR_ALLOW
+fast-reroute remote-lfa level-1 mpls-ldp
+redistribute maximum-prefix 10000 80 warning-only
+passive-interface Loopback0
+bfd all-interfaces
+mpls ldp sync
+!
+router bgp 3663
+template peer-policy IBGP_AF
+route-map BGP_RR_COM_IN in
+route-map BGP_RR_COM_OUT out
+send-community both
+send-label explicit-null
+exit-peer-policy
+!
+template peer-session IBGP_Peer
+password 7 14561C5E0503223F65
+update-source Loopback0
+fall-over bfd
+exit-peer-session
+!
+bgp router-id 10.46.0.64
+bgp log-neighbor-changes
+bgp graceful-restart
+neighbor 10.43.52.4 remote-as 3663
+neighbor 10.43.52.4 inherit peer-session IBGP_Peer
+neighbor 10.43.52.4 description Agg Router 2
+neighbor 10.43.52.5 remote-as 3663
+neighbor 10.43.52.5 inherit peer-session IBGP_Peer
+neighbor 10.43.52.5 description Agg Router 1
+!
+address-family ipv4
+no neighbor 10.43.52.4 activate
+no neighbor 10.43.52.5 activate
+exit-address-family
+!
+address-family ipv4 mvpn
+neighbor 10.43.52.4 activate
+neighbor 10.43.52.4 send-community extended
+neighbor 10.43.52.4 inherit peer-policy IBGP_AF
+neighbor 10.43.52.5 activate
+neighbor 10.43.52.5 send-community extended
+neighbor 10.43.52.5 inherit peer-policy IBGP_AF
+exit-address-family
+!
+address-family vpnv4
+neighbor 10.43.52.4 activate
+neighbor 10.43.52.4 send-community extended
+neighbor 10.43.52.4 inherit peer-policy IBGP_AF
+neighbor 10.43.52.5 activate
+neighbor 10.43.52.5 send-community extended
+neighbor 10.43.52.5 inherit peer-policy IBGP_AF
+exit-address-family
+!
+address-family vpnv6
+neighbor 10.43.52.4 activate
+neighbor 10.43.52.4 send-community extended
+neighbor 10.43.52.4 inherit peer-policy IBGP_AF
+neighbor 10.43.52.5 activate
+neighbor 10.43.52.5 send-community extended
+neighbor 10.43.52.5 inherit peer-policy IBGP_AF
+exit-address-family
+!
+address-family l2vpn vpls
+neighbor 10.43.52.4 activate
+neighbor 10.43.52.4 send-community extended
+neighbor 10.43.52.4 inherit peer-policy IBGP_AF
+neighbor 10.43.52.5 activate
+neighbor 10.43.52.5 send-community extended
+neighbor 10.43.52.5 inherit peer-policy IBGP_AF
+exit-address-family
+!
+address-family rtfilter unicast
+neighbor 10.43.52.4 activate
+neighbor 10.43.52.4 send-community extended
+neighbor 10.43.52.5 activate
+neighbor 10.43.52.5 send-community extended
+exit-address-family
+!
+address-family ipv6 vrf CLTE_S1_WAUS
+redistribute connected
+exit-address-family
+!
+address-family ipv4 vrf ENG
+redistribute connected
+redistribute static
+exit-address-family
+!
+address-family ipv6 vrf ENG
+redistribute connected
+redistribute static
+exit-address-family
+!
+address-family ipv4 vrf PUBLIC
+redistribute connected
+redistribute static
+exit-address-family
+!
+address-family ipv6 vrf PUBLIC
+redistribute connected
+redistribute static
+exit-address-family
+!
+ip forward-protocol nd
+ip tcp path-mtu-discovery
+no ip http server
+no ip http secure-server
+ip http client source-interface Loopback0
+!
+ip extcommunity-list expanded ALLOW_ALL
+10 permit .*
+ip bgp-community new-format
+ip ftp source-interface Loopback0
+ip ftp username nsight
+ip ftp password 7 083145402C4C5014131F
+ip tftp source-interface GigabitEthernet0
+ip ssh time-out 60
+ip ssh source-interface Loopback0
+ip ssh version 2
+!
+ip access-list extended ACL_NSIGHT_VTY
+10 permit ip 10.0.0.0 0.255.255.255 any
+20 permit ip 206.40.96.0 0.0.31.255 any
+ip access-list extended NETCONF_SSH
+10 permit ip object-group NETCONF_MGMT any
+ip access-list extended mgmt_networks
+10 permit ip host 63.135.128.1 any
+20 permit ip host 206.40.99.178 any
+30 permit ip 206.40.108.192 0.0.0.63 any
+40 permit ip 206.40.108.128 0.0.0.31 any
+50 permit ip 206.40.111.192 0.0.0.7 any
+60 permit ip 10.43.22.192 0.0.0.63 any
+70 permit ip 10.43.26.0 0.0.0.127 any
+80 permit ip 10.43.10.16 0.0.0.15 any
+90 permit ip 10.43.52.0 0.0.0.255 any
+100 permit ip 10.43.95.0 0.0.0.255 any
+110 permit ip 10.43.53.0 0.0.0.255 any
+120 permit ip 10.43.88.0 0.0.0.255 any
+130 permit ip 10.43.89.0 0.0.0.255 any
+140 permit ip 10.43.90.0 0.0.0.255 any
+150 permit ip 10.43.91.0 0.0.0.255 any
+160 permit ip 10.43.92.0 0.0.0.255 any
+170 permit ip 10.43.93.0 0.0.0.255 any
+180 permit ip 10.43.94.0 0.0.0.255 any
+190 permit ip 10.43.96.0 0.0.0.255 any
+200 permit ip 10.43.97.0 0.0.0.255 any
+210 permit ip 10.43.34.0 0.0.0.255 any
+220 permit ip 10.46.0.0 0.0.255.255 any
+!
+!
+ip prefix-list PFX_MPLS_LDP_ALLOW seq 5 permit 10.43.52.0/24 ge 32
+ip prefix-list PFX_MPLS_LDP_ALLOW seq 10 permit 10.43.95.0/24 ge 32
+ip prefix-list PFX_MPLS_LDP_ALLOW seq 15 permit 10.43.96.0/24 ge 32
+ip prefix-list PFX_MPLS_LDP_ALLOW seq 20 permit 10.43.97.0/24 ge 32
+ip prefix-list PFX_MPLS_LDP_ALLOW seq 25 permit 10.46.0.0/19 ge 32
+ip sla responder
+ip sla responder twamp
+timeout 500
+ip sla server twamp
+timer inactivity 500
+logging alarm informational
+logging trap notifications
+logging origin-id hostname
+logging source-interface Loopback5147 vrf ENG
+logging host 10.43.30.76 vrf ENG
+logging host 10.43.34.12 vrf ENG
+!
+route-map BGP_RR_COM_OUT permit 10
+match extcommunity ALLOW_ALL
+!
+route-map RMAP_ISIS_IN permit 10
+match tag 1000 1028 9999 1057
+!
+route-map BGP_RR_COM_IN permit 10
+match extcommunity ALLOW_ALL
+!
+route-map RMAP_MPLS_FRR_ALLOW permit 10
+match ip address prefix-list PFX_MPLS_LDP_ALLOW
+!
+route-map BGP_TAG permit 10
+set community 3663:1057
+!
+snmp-server group stats v3 priv
+snmp-server trap-source Loopback0
+snmp-server location Weston, WI
+snmp-server contact Spectrum CHC00479121 - CF7
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps entity-state
+snmp-server enable traps entity
+snmp-server enable traps cpu threshold
+snmp-server enable traps alarms informational
+snmp-server host 10.46.224.191 MPLS
+snmp ifmib ifalias long
+snmp ifmib ifindex persist
+mpls ldp router-id Loopback0 force
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+*******************************************************************************
+Description: Weston Retail Store ASR920-24SZ-IM 1
+Hostname: CF7WESRTSB11.eng.nsight.com
+Machine Type: Cisco ASR920-24SZ-IM
+Loc ID: 70693
+Location: Weston, WI, Weston, WI
+*******************************************************************************
+^C
+banner login ^C
+*******************************************************************************
+
+This is a private computer system. It is for authorized use only. Users
+(authorized or unauthorized) have no explicit or implicit expectation of
+privacy.
+
+Any or all uses of this system and all files on this system may be
+intercepted, monitored, recorded, copied, audited, inspected, and
+disclosed to authorized site, law enforcement personnel, as well as
+authorized officials of other agencies. By using this system, the user
+consents to such interception, monitoring, recording, copying, auditing,
+inspection, and disclosure at the discretion of authorized site personnel.
+
+Unauthorized or improper use of this system may result in administrative
+disciplinary action and civil and criminal penalties. By continuing to
+use this system you indicate your awareness of and consent to these terms
+and conditions of use. LOG OFF IMMEDIATELY if you do not agree to the
+conditions stated in this warning. Have a nice day.
+
+*******************************************************************************
+^C
+configuration mode exclusive
+!
+line con 0
+exec-timeout 60 0
+logging synchronous
+login authentication CONSOLE
+stopbits 1
+line vty 0 4
+session-timeout 45
+access-class ACL_NSIGHT_VTY in vrf-also
+exec-timeout 30 0
+transport preferred ssh
+transport input telnet ssh
+line vty 5 98
+session-timeout 45
+access-class ACL_NSIGHT_VTY in vrf-also
+exec-timeout 30 0
+transport preferred ssh
+transport input telnet ssh
+!
+call-home
+contact-email-addr network-routing@nsight.com
+rate-limit 4
+sender from nsightrouter@nsight.com
+sender reply-to noreply@nsight.com
+source-interface Loopback5147
+vrf ENG
+profile "smart_licensing"
+reporting smart-licensing-data
+destination transport-method http
+destination address http http://10.43.83.102:8080/Transportgateway/services/DeviceRequestHandler
+ntp server 10.43.52.4
+ntp server 10.43.52.5
+!
+!
+netconf max-sessions 15
+
+event manager environment _syslog_bfd .*CLNS-5-ADJCHANGE.*) (Up|Down).*
+event manager directory user policy "flash:/"
+!
+netconf-yang feature candidate-datastore
+end
+

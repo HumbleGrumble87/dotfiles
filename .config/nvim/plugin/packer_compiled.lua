@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/humble/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/humble/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/humble/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/humble/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/humble/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/jpg/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/jpg/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/jpg/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/jpg/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/jpg/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,42 +76,42 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["cisco.vim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/cisco.vim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/cisco.vim",
     url = "https://github.com/momota/cisco.vim"
   },
   ["darkplus.nvim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
   ["nvim-surround"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
   },
   ["onedarker.nvim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/onedarker.nvim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/onedarker.nvim",
     url = "https://github.com/lunarvim/onedarker.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/humble/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    path = "/home/jpg/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/lunarvim/tokyonight.nvim"
   }
 }

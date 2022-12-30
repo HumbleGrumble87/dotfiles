@@ -1,0 +1,5 @@
+920 is going to be staying as permanent lateral because it has T1s and 540s don't do those
+
+going to make the "temp" link a 10gb with LR optics
+
+don't forget to add the lr optics to the loc request

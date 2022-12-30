@@ -1,6 +1,7 @@
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
+
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -22,6 +23,8 @@ vim.g.maplocalleader = " "
 --  "A-" == Alt
 --  "S-" == Shift
 --  "<leader>" == spacebar, as noted above
+
+keymap("t", "<Esc>", "<C-\\><C-n>", term_opts) 
 
 
 -- Normal --

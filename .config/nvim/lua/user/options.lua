@@ -40,5 +40,7 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 vim.cmd "set mouse = " -- somehow this disables the mouse, which is good because using mouse fucks up my copy/paste
-vim.cmd [[command Meow %s/^\s\+]]
-vim.cmd [[command Woof set nonumber norelativenumber]]
+vim.cmd [[command Snap %s/^\s\+]]
+vim.cmd [[command Crackle set nonumber norelativenumber]]
+vim.cmd [[command Pop set ft=cisco]]
+
