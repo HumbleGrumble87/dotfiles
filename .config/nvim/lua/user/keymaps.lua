@@ -67,6 +67,7 @@ keymap("n", "<S-j>", ":bprevious<CR>", opts)
 
 -- Select All
 keymap("n", "<leader>a", "ggVG", opts)
+keymap("n", "<leader>y", ":\"*y", opts)
 
 
 -- Personal Shit Because I Like it
