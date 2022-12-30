@@ -75,7 +75,7 @@ keymap("n", "<leader>y", ":\"*y", opts)
 
 -- Personal Shit Because I Like it
 keymap("n", "<leader>h", ":nohlsearch<CR>", opts) -- this clears any highlighting on the screen from a residual search (I'm OCD lol)
-keymap("n", "<leader>q", ":bd<CR>", opts) -- this closes an open vim buffer (like filetree or help menus)
+keymap("n", "<leader>q", ":bd!<CR>", opts) -- this closes an open vim buffer (like filetree or help menus)
 
 
 -- Insert --

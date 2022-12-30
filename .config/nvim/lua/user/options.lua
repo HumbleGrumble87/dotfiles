@@ -43,4 +43,5 @@ vim.cmd "set mouse = " -- somehow this disables the mouse, which is good because
 vim.cmd [[command Snap %s/^\s\+]]
 vim.cmd [[command Crackle set nonumber norelativenumber]]
 vim.cmd [[command Pop set ft=cisco]]
+vim.cmd [[command Hello set nonumber norelativenumber | colorscheme gruvbox | set ft=cisco]]
 

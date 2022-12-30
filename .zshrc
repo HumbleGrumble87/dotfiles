@@ -113,5 +113,5 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias cl="clear"
 alias go='~/scripts/s.sh' 
-setopt vi
+#setopt vi
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
