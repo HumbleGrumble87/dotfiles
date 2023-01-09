@@ -47,19 +47,17 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself (every time we change THIS file and SAVE it, automatically update and manage packer) this is literally the equivelant of :PackerUpdate
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim (this is here because a ton of other plugins rely on this plugin)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins (this is here because a ton of other plugins rely on this plugin as well)
-  use "kylechui/nvim-surround" -- Useful to add to OUTER words (like adding quotes around words) 
-    require("nvim-surround").setup() -- goes with the above line, this line was necessary per the github page
-
+  use {"kylechui/nvim-surround", config = function() require("nvim-surround").setup() end}  -- Useful to add to OUTER words (like adding quotes around words) 
   use "momota/cisco.vim" -- cisco syntax highlighting
+  use "famiu/bufdelete.nvim" -- to keep windows intact while i unload buffers
 
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/onedarker.nvim" -- saw this on Chris's YT channel
   use "lunarvim/darkplus.nvim" -- same as above
   use "lunarvim/tokyonight.nvim" -- same as above
   use "ellisonleao/gruvbox.nvim" -- good for terminal theme 
-  use "famiu/bufdelete.nvim" -- to keep windows intact while i unload buffers
 
 
   -- Automatically set up your configuration after cloning packer.nvim
