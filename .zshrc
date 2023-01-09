@@ -115,3 +115,4 @@ alias cl="clear"
 alias go='~/scripts/s.sh' 
 #setopt vi
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+export PAGER=ov
