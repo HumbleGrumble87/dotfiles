@@ -1,0 +1,23 @@
+Moving columns
+  record a macro - `qa` to start and `q` to end
+  repeat macro - `@@`
+  or use macro - `@a`
+
+Sort on given column
+  see what column you're in using bottom right
+  use this link to help:
+  https://stackoverflow.com/questions/1355004/how-to-sort-numeric-and-literal-columns-in-vim
+
+Jump around
+	go to newer position in CHANGE list - `g,`
+  * go to older position in CHANGE list - `g;`
+	go to newer position in JUMP list - `Ctrl + i`
+  *	go to older position in JUMP list - `Ctrl + o`
+    go to parenthesis with - `%`
+
+
+Yank
+	Yank relative line above you with `:-yXX` (xx being the relative line number)
+	Yank relative line below you with `:+yXX` (xx being the relative line number)
+
+
