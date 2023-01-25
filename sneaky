@@ -3,8 +3,9 @@ Moving columns
   repeat macro - `@@`
   or use macro - `@a`
 
-Sort on given column
+SORT on given column
   see what column you're in using bottom right
   use this link to help:
   https://stackoverflow.com/questions/1355004/how-to-sort-numeric-and-literal-columns-in-vim
+
 
