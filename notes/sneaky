@@ -21,3 +21,12 @@ Yank
 	Yank relative line below you with `:+yXX` (xx being the relative line number)
 
 
+Find
+	find / -path "/mnt" -prune -o -perm /u+s,g+s,o+t 2>/dev/null -exec ls -ld {} \;
+	ls -d /[^m]* | xargs -I % zsh -c 'ls -ld  %/**/*' 2>/dev/null | egrep "(^...s.*)|(^......s.*)"
+	https://stackoverflow.com/questions/4210042/how-do-i-exclude-a-directory-when-using-find
+	
+
+Copy/Paste
+	From system clipboard to terminal emulator -> shift+ins (insert is Fn+v)
+	From TE to system -> tmux copy mode is setup to auto add to clipboard
