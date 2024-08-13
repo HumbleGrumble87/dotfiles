@@ -118,6 +118,6 @@ fi
 
 alias vim="nvim"
 alias go='~/scripts/s.sh'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 set -o vi
 
