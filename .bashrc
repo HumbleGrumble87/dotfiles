@@ -117,7 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 alias vim="nvim"
-alias go='~/scripts/s.sh'
+alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 set -o vi
 
