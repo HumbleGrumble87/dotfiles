@@ -115,6 +115,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 set -o vi
 shopt -s nocaseglob
 
@@ -132,7 +135,3 @@ tn='/mnt/c/Users/humbl/Nextcloud/Notes/tmux-notes.txt'
 vn='/mnt/c/Users/humbl/Nextcloud/Notes/vim-notes.txt'
 
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
