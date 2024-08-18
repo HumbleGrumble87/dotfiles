@@ -130,8 +130,8 @@ alias nextcloud="cd /mnt/c/Users/humbl/Nextcloud"
 
 today=$(date +'%m-%d-%Y')
 
-bn='~/bash-notes.txt'
-tn='/mnt/c/Users/humbl/Nextcloud/Notes/tmux-notes.txt'
-vn='/mnt/c/Users/humbl/Nextcloud/Notes/vim-notes.txt'
+bn="$HOME/bash-notes.txt"
+tn="$HOME/tmux-notes.txt"
+vn="$HOME/vim-notes.txt"
 
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
