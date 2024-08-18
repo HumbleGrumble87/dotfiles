@@ -1,0 +1,9 @@
+these are my vim notes
+
+<leader>+f +b = buffer switcher menu
+
+<leader> + "|" = vertical spit
+<leader> + "-" = hori split
+
+
+

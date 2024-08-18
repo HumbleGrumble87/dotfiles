@@ -115,13 +115,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
+set -o vi
+shopt -s nocaseglob
+
 alias vim="nvim"
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-set -o vi
-shopt -s nocaseglob
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/humbl/Nextcloud/Notes"
 alias nextcloud="cd /mnt/c/Users/humbl/Nextcloud"
+
+today=$(date +'%m-%d-%Y')
+
+bn='~/bash-notes.txt'
+tn='/mnt/c/Users/humbl/Nextcloud/Notes/tmux-notes.txt'
+vn='/mnt/c/Users/humbl/Nextcloud/Notes/vim-notes.txt'
 
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
