@@ -121,12 +121,13 @@ export NVM_DIR="$HOME/.nvm"
 set -o vi
 shopt -s nocaseglob
 
+user=$(whoami)
 alias vim="nvim"
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias humble="cd /mnt/c/Users/humbl/"
-alias notes="cd /mnt/c/Users/humbl/Nextcloud/Notes"
-alias nextcloud="cd /mnt/c/Users/humbl/Nextcloud"
+alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
+alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 
 today=$(date +'%m-%d-%Y')
 
