@@ -137,7 +137,10 @@ alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
+alias wn="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
+alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/config"
 alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
+alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 
 today=$(date +'%m-%d-%Y')
 
