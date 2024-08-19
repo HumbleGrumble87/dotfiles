@@ -1,9 +1,91 @@
 these are my vim notes
 
-<leader>+f +b = buffer switcher menu
+#Exiting
+----------------------------------------------------
+save and close                  = ZZ
+discard and close               = ZQ
+save and close WINDOW           = <leader> +b +D 
 
-<leader> + "|" = vertical spit
-<leader> + "-" = hori split
+
+
+
+#Navigating page
+----------------------------------------------------
+jump backwards end of word      = ge
+move cursor to matching char    = %
+
+jump to char occurence          = f,F,t,T
+repeat previous "jump" movement = ; ,
+
+center cursor on screen         = zz
+
+
+
+#Editing
+----------------------------------------------------
+undo                            = u
+re-do                           = ctrl +r
+
+replace char until ESC pressed  = R
+rewrite line                    = cc
+
+repeat last command             = .
+
+shift text                      = >>
+
+replace/substitute pattern      = :%s/old/new/g
+search and replace plugin       = <leader> +s +r
+
+#Visual Mode
+----------------------------------------------------
+start visual mode               = v 
+start linewise mode             = V 
+start blockwise mode            = ctrl +v
+shift text                      = >
+
+
+#managing WINDOWS
+----------------------------------------------------
+vertical split                  = <leader> + "|"
+                                = ctrl + ws
+
+hori split                      = <leader> + "-"
+                                = ctrl + wv
+
+
+
+#managing BUFFERS
+----------------------------------------------------
+switch buffers                  = <leader> +`  
+                                = :b(n)ext
+                                = :b(p)revious
+  open buffer menu              = <leader> +f +b
+                                = <leader> +b +b
+
+close buffer                   
+  aka delete buffer
+                                = <leader> +b +d
+  close buffer AND window       = <leader> +b +D
+                                = :b(d)elete
+
+open new buffer
+  must be named                 = :e filename
+                                = <leader> +f +n
+
+
+
+#managing and searching FILES
+----------------------------------------------------
+open file-tree                  = <leader> +e 
+  -open file in buffer          = <CR>
+
+nerdTree HELP                   = ? (must have tree open)
+  add file                      = a 
+  delete file                   = d
+  toggle hidden                 = H
+
+search open buffers             = <leader> +f +b
+search files in current dir     = <leader> +f +f
 
 
 
