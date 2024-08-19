@@ -121,7 +121,17 @@ export NVM_DIR="$HOME/.nvm"
 set -o vi
 shopt -s nocaseglob
 
-user=$(whoami)
+var_hostname=$(hostname)
+
+case "$var_hostname" in
+EVELYN)
+  user=humbl
+  ;;
+Ishmael)
+  user=jimmy
+  ;;
+esac
+
 alias vim="nvim"
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
