@@ -3,7 +3,7 @@ return {
   keys = {
     {
       "<leader>sB",
-      ":Telescope file_browser path=%:p:h=%:p:h<cr>",
+      ":Telescope file_browser path=/home/jimmy/ select_buffer=true<CR>",
       desc = "Browse Files",
     },
   },

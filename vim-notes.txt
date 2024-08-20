@@ -59,8 +59,9 @@ hori split                      = <leader> + "-"
 switch buffers                  = <leader> +`  
                                 = :b(n)ext
                                 = :b(p)revious
-  open buffer menu              = <leader> +f +b
-                                = <leader> +b +b
+  open buffer menu              = <leader> +f +b (find buffer)
+                                = <leader> +b +e (buffer explorer)
+  BOOM                          = <S-h><S-h>
 
 close buffer                   
   aka delete buffer
