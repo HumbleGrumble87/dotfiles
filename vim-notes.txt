@@ -90,3 +90,33 @@ search files in current dir     = <leader> +f +f
 
 
 
+
+
+#stuff waiting for a home above
+----------------------------------------------------
+
+you can add specific directories to your nvim path so that you can fuzzy search for them
+https://www.reddit.com/r/vim/comments/fg5wce/can_you_make_wildmenu_search_hidden_files_and/
+
+learn more with ':help path'
+https://medium.com/usevim/vim-101-jumping-between-files-f9e16f79f63a
+
+view path with ':set path?' 
+add to path with ':set path+=/home/jimmy/mypath'
+can use * and ** and ? wildcards but be careful watch you wish for cuz it can get slow
+use ':help 'path'' to learn more about how path works, it's use of env variable $expansion and wildcards
+
+path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/
+
+this path was added to autocmds.lua file with command vim.cmd([set path ...])
+
+
+
+
+to follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
+
+
+
+
+
+
