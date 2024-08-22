@@ -85,8 +85,9 @@ nerdTree HELP                   = ? (must have tree open)
   delete file                   = d
   toggle hidden                 = H
 
-search open buffers             = <leader> +f +b
 search files in current dir     = <leader> +f +f
+
+find files 
 
 
 
@@ -106,17 +107,11 @@ add to path with ':set path+=/home/jimmy/mypath'
 can use * and ** and ? wildcards but be careful watch you wish for cuz it can get slow
 use ':help 'path'' to learn more about how path works, it's use of env variable $expansion and wildcards
 
-path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/
 
+path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/
 this path was added to autocmds.lua file with command vim.cmd([set path ...])
 
 
-
-
-to follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
-
-
-
-
+my house to follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
 
 
