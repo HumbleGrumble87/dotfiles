@@ -2,4 +2,5 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 --
-vim.cmd([[ set path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/ ]])
+vim.cmd(
+  [[ set path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/,/mnt/c/Users/Jimmy/Nextcloud/ ]])

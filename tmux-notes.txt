@@ -1,1 +1,2 @@
+explain the delay timer you set in tmux.conf and also why you chose to change copy paste
 

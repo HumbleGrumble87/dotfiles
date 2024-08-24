@@ -1,1 +1,3 @@
 these are my bash notes
+
+explain globbing vs regex here and allow it to be the context for explaining how to use the "find command"
