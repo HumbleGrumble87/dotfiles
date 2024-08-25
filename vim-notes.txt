@@ -1,5 +1,13 @@
 these are my vim notes
 
+
+#Help Docs
+To follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
+The "holy grail" can be found by searching for it with ':help holy-grail'
+
+
+
+
 #Exiting
 ----------------------------------------------------
 save and close                  = ZZ
@@ -93,7 +101,7 @@ find files
 
 
 
-#stuff waiting for a home above
+#path
 ----------------------------------------------------
 
 you can add specific directories to your nvim path so that you can fuzzy search for them
@@ -112,6 +120,5 @@ path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/
 this path was added to autocmds.lua file with command vim.cmd([set path ...])
 
 
-my house to follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
 
 
