@@ -150,3 +150,9 @@ export vn="$HOME/vim-notes.txt"
 export nc="/mnt/c/Users/$user/Nextcloud"
 
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+
+#for access to /** file globbing
+shopt -s globstar
+
+#for access to +(! ) file globbing
+shopt -s extglob
