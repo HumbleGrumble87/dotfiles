@@ -148,6 +148,7 @@ export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
 export nc="/mnt/c/Users/$user/Nextcloud"
+export wn="/mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
 
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
 
