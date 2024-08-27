@@ -1,0 +1,22 @@
+Description:
+Three routers. 2 links. Static routes exist for lo0s of ibgp links. No routing protocols established.
+
+
+Problem:
+1) Make the one link IBGP using loopbacks. They use static routes to hit each others loopbacks.
+
+2) R3 should be able to ping loopback of R1 and can only use BGP to accomplish this. So setup EBGP link.
+
+3) R1 advertises a summary for three loopback networks.
+
+
+Solution:
+1) easy ibgp setup
+
+2) easy ebgp setup
+
+3) fairly simple config under ipv4 address family:
+   'aggregate-address 172.16.100.0 255.255.252.0 summary-only'
+
+   make sure you have at least one of the network configured for advertisement as well or bgp wont advertise the summary
+   'network 172.16.100.0 mask 255.255.255.0'
