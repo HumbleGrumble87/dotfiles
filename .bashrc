@@ -142,14 +142,16 @@ alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. In
 alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 
-today=$(date +'%m-%d-%Y')
-
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
 export nc="/mnt/c/Users/$user/Nextcloud"
 export wn="/mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
 
+#for quickly creating/editing notes for the day
+today=$(date +'%m-%d-%Y')
+
+#make prompt look clean and put directories on their own line so when you use laptop, the prompt isn't halfway across the page already
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
 
 #for access to /** file globbing
@@ -157,3 +159,8 @@ shopt -s globstar
 
 #for access to +(! ) file globbing
 shopt -s extglob
+
+#for accessing scripts accross the system
+export PATH=$PATH:$HOME/scripts/
+
+
