@@ -149,7 +149,6 @@ export nt="/mnt/c/Users/$user/Nextcloud/Notes"
 export wn="/mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
 export nc="/mnt/c/Users/$user/Nextcloud"
 
-
 #for quickly creating/editing notes for the day
 today=$(date +'%m-%d-%Y')
 
@@ -165,4 +164,6 @@ shopt -s extglob
 #for accessing scripts accross the system
 export PATH=$PATH:$HOME/scripts/
 
-
+#this supposedly fixes highlighting of dirs on the windows side - ugly AF
+LS_COLORS=$LS_COLORS:'ow=1;34:'
+export LS_COLORS
