@@ -3,4 +3,4 @@
 -- Add any additional autocmds here
 --
 vim.cmd(
-  [[ set path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/,/mnt/c/Users/Jimmy/Nextcloud/ ]])
+  [[ set path=.,~/.config/nvim/**,$nc/,~/,$nc/Documents/ ]])

@@ -137,7 +137,7 @@ alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
-alias wn="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
+alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
 alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/config"
 alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
@@ -145,8 +145,10 @@ alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. 
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
-export nc="/mnt/c/Users/$user/Nextcloud"
+export nt="/mnt/c/Users/$user/Nextcloud/Notes"
 export wn="/mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
+export nc="/mnt/c/Users/$user/Nextcloud"
+
 
 #for quickly creating/editing notes for the day
 today=$(date +'%m-%d-%Y')

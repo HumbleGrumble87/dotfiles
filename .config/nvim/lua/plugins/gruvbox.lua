@@ -1,3 +1,4 @@
+--cuz it looks sick
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },

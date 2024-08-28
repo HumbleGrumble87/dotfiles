@@ -1,0 +1,24 @@
+Troubleshooting MPLS
+
+Description:
+Linear/spanning-tree/loop-free topology (straight line)
+
+5 Routers are numbered R21-25 with Lo0s everywhere @ 100.100.100.2[1-5] /32
+
+"...perform MPLS label forwarding-operation."
+
+
+Problem:
+1) Configure LDP b/w R22 and R23
+
+2) Make sure the LDP router-id uses Lo0 "as the persistent identifier"
+  -LDP defaults to lo0 anyway, but question says "ensure"
+  -also i believe the "transport address" aka source address is default to the rouder-id as well
+
+3) Modify the head and tail end (R21 and R25) to enable MPLS-TE tunnel b/w them
+
+
+Solution:
+1 and 2) mpls ldp router-id lo0 && router ospf 1 mpls ldp autoconfig area 0
+
+3) mpls traffic-eng tunnels
