@@ -146,7 +146,7 @@ export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
 export nt="/mnt/c/Users/$user/Nextcloud/Notes"
-export wn="/mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
+export wn="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc/work-notes"
 export nc="/mnt/c/Users/$user/Nextcloud"
 
 #for quickly creating/editing notes for the day
