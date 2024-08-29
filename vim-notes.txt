@@ -121,4 +121,22 @@ this path was added to autocmds.lua file with command vim.cmd([set path ...])
 
 
 
+#YOLO MOTHER FUCKER
+----------------------------------------------------
+HOLY FLYING FUCK WE HIT THE JACK POT TONIGHT!!!
 
+1) LazyVim comes with a plugin called "flash" that let's you jump around like you do in "vimium" in web browser.
+   -not only that but you can quickly select "tree-sitter" trees (like code paragraphs)
+   -and you can also integrate it with your / and ? searches by C-s to toggle it on
+   -also when you f,F,t,or T you can now just hit those characters again to continue movement, fuck , and ;
+
+2) You also have a "surround" plugin called "mini.surround" and it's not the OG tpope plugin
+   -it doesn't use ysiw, it uses gsaiw
+   -all you have to know is that it works great
+
+3) Also telescope and fzf are the same thing and it's HELLA powerful for scoping not only files but
+   -jumplist
+   -leader+space and leader+, and leader+/ should all be top of your mind when working in a directory (like when you're working on configs)
+   -leader+: can telescope your command history
+
+4) g; and g, are how you get around latest changes as well. can also get you back to after you jumped with search aka / or ?
