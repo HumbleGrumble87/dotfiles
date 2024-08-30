@@ -10,7 +10,7 @@ echo $host
 address=$(echo $host | grep -ohE "^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}")
 echo $address
 
-ssh "jpg@${address}" # profit
+#ssh "jpg@${address}" # profit
 
-#sshpass -p "Suzuki_98" ssh "jpg@${address}"
+sshpass -p "Suzuki_98" ssh "jpg@${address}"
 #echo $address
