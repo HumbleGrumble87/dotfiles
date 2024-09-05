@@ -130,6 +130,10 @@ EVELYN)
 Ishmael)
   export user=jimmy
   ;;
+NETWORK-JPG)
+  export user=jimmy
+  ;;
+
 esac
 
 alias vim="nvim"
@@ -148,6 +152,7 @@ export vn="$HOME/vim-notes.txt"
 export nt="/mnt/c/Users/$user/Nextcloud/Notes"
 export wn="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc/work-notes"
 export nc="/mnt/c/Users/$user/Nextcloud"
+export od="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc"
 
 #for quickly creating/editing notes for the day
 today=$(date +'%m-%d-%Y')
