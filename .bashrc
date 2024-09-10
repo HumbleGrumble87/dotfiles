@@ -145,6 +145,7 @@ alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI
 alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/config"
 alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
+alias bashrc="source ~/.bashrc && echo bashrc sourced"
 
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
