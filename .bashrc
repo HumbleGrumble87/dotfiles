@@ -146,6 +146,8 @@ alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. In
 alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
+alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
+alias cm="cmatrix"
 
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
@@ -154,7 +156,6 @@ export nt="/mnt/c/Users/$user/Nextcloud/Notes"
 export wn="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc/work-notes"
 export nc="/mnt/c/Users/$user/Nextcloud"
 export od="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc"
-export turtles="/mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
 #for quickly creating/editing notes for the day
 today=$(date +'%m-%d-%Y')
 
