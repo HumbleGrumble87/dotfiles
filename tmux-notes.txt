@@ -1,2 +1,72 @@
 explain the delay timer you set in tmux.conf and also why you chose to change copy paste
 
+
+
+
+<leader> = ctrl-b
+
+named session = tmux new -s mysession
+
+kill session = tmux kill-session -t mysession
+
+kill all but my current session = tmux kill-session -a
+
+detach = <leader> + d
+
+session list = tmux ls
+
+
+
+
+
+-- PANES --
+split vertical = <leader> + %
+
+split hori = <leader> + "
+
+close pane = <leader> + x
+
+NAVIGATE one pane left,right,up,down = ctrl-h,l,k,j
+
+MOVE current pane left = <leader> + {
+
+toggle pane layouts = <leader> + spacebar
+
+
+
+
+
+-- WINDOWS --
+create window = <leader> + c
+
+name window = <leader> + ,
+
+close window = <leader> + &
+
+NAVIGATE one window left = shift plus left arrow
+
+NAVIGATE windows via menu = <leader> + w
+
+MOVE current window left = ctrl plus shift plus left arrow
+
+renumber window to remove gap = :movew -r
+
+
+
+
+-- COPY MODE --
+copy mode = <leader> + [
+
+quit mode = q
+
+search = / ?
+
+next occurence = n N
+
+sync panes = :setw synchronize-panes
+
+list buffers = <leader> + =
+
+edit buffer with 'e' then write with ':wq'
+
+

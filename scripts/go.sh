@@ -12,5 +12,5 @@ echo $address
 
 #ssh "jpg@${address}" # profit
 
-sshpass -p "Suzuki_98" ssh "jpg@${address}"
+sshpass -p "Suzuki_87" ssh "jpg@${address}"
 #echo $address
