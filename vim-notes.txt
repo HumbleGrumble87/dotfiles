@@ -53,8 +53,24 @@ repeat last command             = .
 
 shift text                      = >>
 
+delete blank lines              =  g/^$/d
+
 replace/substitute pattern      = :%s/old/new/g
-  '%' is the range over the 's' command, which is short for the range ':1,$', which means "start from line 1 and go to the last line in the buffer"
+  what is the % sign?
+  shorthand for ':1,$', which = "start from line 1 and go to the last line in the buffer"
+
+  :%s/\v[0-9](.[0-9])+/\r\t\0
+
+  \v        = very magic regex
+  ()        = define a grouping to be referenced later
+  \r        = carriage return
+  \n        = can't use this
+  \t        = horizontal tab
+  \0        = reference from ()
+
+  so the above line says "on each line, find the IP, and move to a newline with a tab, and paste the IP on said line"
+
+
 search and replace plugin       = <leader> +s +r
 
 "surround" via the "mini.surround" plugin - it's not the OG tpope plugin 
@@ -67,12 +83,26 @@ play macro                      = @a
 repeat last macro               = @@
 repeat last macro 20 time       = 20@a
 
+ 
+
+#mulicursor mode and COLUMNS
+----------------------------------------------------
+visual block                    =  ctrl +v
+move block                      =  j,k to go up and down
+insert mode                     =  I
+apply to all line               =  esc
+
+column auto-format              =  :%!column -t            https://stackoverflow.com/questions/1229900/reformat-in-vim-for-a-nice-column-layout
+align columns                   =  ctrl+v to select and << to move it left/right - may need to select blank space so you can move your shit
+
+delete blank lines              =  g/^$/d
 
 
 
 
 
-#Visual Mode
+
+#visual Mode
 ----------------------------------------------------
 start visual mode               = v 
 start linewise mode             = V 
