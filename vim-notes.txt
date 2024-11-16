@@ -8,11 +8,13 @@ The "holy grail" can be found by searching for it with ':help holy-grail'
 
 
 
+
 #Exiting
 ----------------------------------------------------
 save and close                  = ZZ
 discard and close               = ZQ
 save and close WINDOW           = <leader> +b +D 
+
 
 
 
@@ -26,6 +28,16 @@ jump to char occurence          = f,F,t,T
 repeat previous "jump" movement = ; ,
 
 center cursor on screen         = zz
+
+LazyVim "flash" plugin is "vimium" like navigation 
+  -can also quickly select "tree-sitter" trees (like code paragraphs)                          
+  -and you can also integrate it with your / and ? searches by C-s to toggle it on                              
+  -also when you f,F,t,or T you can now just hit those characters again to continue movement, fuck , and ;      
+
+g; and g, navigate to latest changes - useful after you jumped with search: / or ?
+
+
+
 
 
 
@@ -42,7 +54,23 @@ repeat last command             = .
 shift text                      = >>
 
 replace/substitute pattern      = :%s/old/new/g
+  '%' is the range over the 's' command, which is short for the range ':1,$', which means "start from line 1 and go to the last line in the buffer"
 search and replace plugin       = <leader> +s +r
+
+"surround" via the "mini.surround" plugin - it's not the OG tpope plugin 
+  -it doesn't use "ysiw", it uses "gsaiw"
+  -prefer this to tpope for consisency
+
+start macro                     = qa
+stop macro                      = q
+play macro                      = @a 
+repeat last macro               = @@
+repeat last macro 20 time       = 20@a
+
+
+
+
+
 
 #Visual Mode
 ----------------------------------------------------
@@ -52,6 +80,9 @@ start blockwise mode            = ctrl +v
 shift text                      = >
 
 
+
+
+
 #managing WINDOWS
 ----------------------------------------------------
 vertical split                  = <leader> + "|"
@@ -59,6 +90,8 @@ vertical split                  = <leader> + "|"
 
 hori split                      = <leader> + "-"
                                 = ctrl + wv
+
+
 
 
 
@@ -83,6 +116,8 @@ open new buffer
 
 
 
+
+
 #managing and searching FILES
 ----------------------------------------------------
 open file-tree                  = <leader> +e 
@@ -96,6 +131,15 @@ nerdTree HELP                   = ? (must have tree open)
 search files in current dir     = <leader> +f +f
 
 find files 
+
+telescope and fzf - HELLA powerful for many things:
+  -jumplist
+  -top of mind when working in a directory (like when you're working on configs)
+    <leader> + space
+    <leader> + ,
+    <leader> + /
+    <leader> + : can telescope your command history
+
 
 
 
@@ -120,24 +164,3 @@ path=.,~/.config/nvim/**,/mnt/c/Users/Jimmy/Nextcloud/Documents/,~/.config/,~/
 this path was added to autocmds.lua file with command vim.cmd([set path ...])
 
 
-
-
-#YOLO MOTHER FUCKER
-----------------------------------------------------
-HOLY FLYING FUCK WE HIT THE JACK POT TONIGHT!!!
-
-1) LazyVim comes with a plugin called "flash" that let's you jump around like you do in "vimium" in web browser.
-   -not only that but you can quickly select "tree-sitter" trees (like code paragraphs)
-   -and you can also integrate it with your / and ? searches by C-s to toggle it on
-   -also when you f,F,t,or T you can now just hit those characters again to continue movement, fuck , and ;
-
-2) You also have a "surround" plugin called "mini.surround" and it's not the OG tpope plugin
-   -it doesn't use ysiw, it uses gsaiw
-   -all you have to know is that it works great
-
-3) Also telescope and fzf are the same thing and it's HELLA powerful for scoping not only files but
-   -jumplist
-   -leader+space and leader+, and leader+/ should all be top of your mind when working in a directory (like when you're working on configs)
-   -leader+: can telescope your command history
-
-4) g; and g, are how you get around latest changes as well. can also get you back to after you jumped with search aka / or ?
