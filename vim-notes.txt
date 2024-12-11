@@ -98,6 +98,7 @@ align columns                   =  ctrl+v to select and << to move it left/right
 
 delete blank lines              =  g/^$/d
 
+change matching lines at cursor =  :%s/\v[0-9](.[0-9])+/\r\t\0
 
 
 
