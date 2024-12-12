@@ -128,7 +128,7 @@ EVELYN)
   export user=humbl
   ;;
 Ishmael)
-  export user=jimmy
+  export user=humbl
   ;;
 NETWORK-JPG)
   export user=jimmy
@@ -147,7 +147,7 @@ alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
-alias cm="cmatrix"
+alias cm="cmatrix -a"
 
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
