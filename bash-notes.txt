@@ -16,3 +16,18 @@ these include built-in programs like 'cd' and 'echo' and 'type', but also specia
 the special characters used for "file-globbing" are called *wildcards* and they include '*' and '?' and '[..]'
 
 https://www.shell-tips.com/bash/wildcards-globbing/#gsc.tab=0
+
+
+
+
+
+
+grep for a word in all files with all folders and subfolders of a given directory
+  grep -r --exclude-dir='.?*' 'o' .
+
+
+
+history | tail -20 | grep
+
+
+

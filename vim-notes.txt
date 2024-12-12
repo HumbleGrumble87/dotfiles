@@ -98,6 +98,8 @@ align columns                   =  ctrl+v to select and << to move it left/right
 
 delete blank lines              =  g/^$/d
 
+change matching lines at cursor =  :%s/\v[0-9](.[0-9])+/\r\t\0
+
 put all matching lines on prev line = g/regex/normal kJ
   'g/\v^\s*via/norm kJ'  says this will match all lines that start with some whitespace, followed by 'via'
   the normal kJ command will execute 'k' (move 1 line UP), and 'J' (join lines)
