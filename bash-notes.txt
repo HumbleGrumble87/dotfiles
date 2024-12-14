@@ -1,24 +1,26 @@
 these are my bash notes
 
-explain globbing vs regex here and allow it to be the context for explaining how to use the "find command"
-
 
 
 bash is a programming language
+  dynamic/implicit langauge with a type system that resembles LISP; 
+  s-expressions: a list where the first element is the function/command/program-to-execute and the rest of the arguments
+  https://www.celantur.com/blog/bash-type-system/
+  like any language, keywords evoke special behavior
+  these include built-in programs like:
+    -cd
+    -echo
+    -type
+  but also special characters like 
+    -$
+    -(
+    -{
+  the special characters used for "file-globbing" are called *wildcards* and they include '*' and '?' and '[..]'
 
-it's a dynamic/implicit langauge with a type system that resembles LISP; s-expressions: a list where the first element is the function/command/program-to-execute and the rest of the arguments
-  -https://www.celantur.com/blog/bash-type-system/
 
-like any programming language, there are keywords that evoke special behavior that can be coded for interpretation of a bash interpretor
-
-these include built-in programs like 'cd' and 'echo' and 'type', but also special characters like '$' and '(' and '{'
-
-the special characters used for "file-globbing" are called *wildcards* and they include '*' and '?' and '[..]'
-
-https://www.shell-tips.com/bash/wildcards-globbing/#gsc.tab=0
-
-
-
+explain globbing vs regex here 
+  -allow it to be the context for describing "find command"
+  -https://www.shell-tips.com/bash/wildcards-globbing/#gsc.tab=0
 
 
 
