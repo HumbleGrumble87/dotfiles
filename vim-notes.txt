@@ -1,6 +1,10 @@
 these are my vim notes
 
 
+change cwd = :cd _path_to_folder_
+  may have to "refresh" the neotree
+
+
 #Help Docs
 To follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
 The "holy grail" can be found by searching for it with ':help holy-grail'
@@ -98,7 +102,9 @@ align columns                   =  ctrl+v to select and << to move it left/right
 
 delete blank lines              =  g/^$/d
 
-change matching lines at cursor =  :%s/\v[0-9](.[0-9])+/\r\t\0
+BOOM 1! change matching lines at cursor =  :%s/\v[0-9](.[0-9])+/\r\t\0
+BOOM 2! true multi-cursor mode = visual block with ctrl+v, highlight lines, then shift+I, then hit escape
+
 
 put all matching lines on prev line = g/regex/normal kJ
   'g/\v^\s*via/norm kJ'  says this will match all lines that start with some whitespace, followed by 'via'
@@ -107,6 +113,7 @@ put all matching lines on prev line = g/regex/normal kJ
 
 add a blank line after matching lines = g/regex/norm o
   'g/add/norm o' will add a blank line after all lines that contain the word "add"
+
 
 
 

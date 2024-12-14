@@ -1,3 +1,6 @@
+these are my tmux notes
+
+
 explain the delay timer you set in tmux.conf and also why you chose to change copy paste
 
 
@@ -53,12 +56,19 @@ renumber window to remove gap = :movew -r
 
 
 
+-- SESSIONS --
+create session = <leader> + : new -s my_session_name
+
+switch session = <leader> + s
+
+rename session = <leader> + $
+
 
 -- COPY MODE --
 copy mode = <leader> + [
 
 quit mode = q
-
+{}
 search = / ?
 
 next occurence = n N
