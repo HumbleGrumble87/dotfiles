@@ -137,7 +137,7 @@ NETWORK-JPG)
 esac
 
 alias vim="nvim"
-alias go='~/scripts/go.sh'
+alias gmg='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
@@ -171,6 +171,13 @@ shopt -s extglob
 
 #for accessing scripts accross the system
 export PATH=$PATH:$HOME/scripts/
+
+#termial pager relies on golang
+export PATH=$PATH:/usr/local/go/bin
+
+#path to OV terminal pager and set the pager env variable
+export PATH=$PATH:/path/to/ov
+export PAGER="ov"
 
 #this supposedly fixes highlighting of dirs on the windows side - ugly AF
 LS_COLORS=$LS_COLORS:'ow=1;34:'
