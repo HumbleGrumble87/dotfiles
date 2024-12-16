@@ -7,6 +7,7 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
-vim.cmd([[ set path=.,~/,~.config/ ]])
+vim.cmd([[ set path=.,~/,~/.config/, ]])
 
+--for work
 vim.cmd([[ set path+=/mnt/c/Users/jpg/OneDrive\\\ -\\\ Northeast\\\ Communications\\\ of\\\ WI.\\\ Inc/ ]])
