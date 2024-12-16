@@ -178,9 +178,8 @@ export LS_COLORS
 #for accessing scripts accross the system
 export PATH=$PATH:$HOME/scripts/
 
-#path to OV terminal pager and set the pager env variable
-export PATH=$PATH:/path/to/ov
-export PAGER="ov"
+#for nvim
+export PATH="$HOME/apps/nvim/bin:$PATH"
 
 #paths for go
 export GOROOT=~/apps/go
@@ -191,3 +190,7 @@ export PATH=$PATH:~/apps/go/bin:$GOPATH/bin
 export PATH=$PATH:~/apps/lazygit
 
 export PATH=~/apps/fzf/bin:$PATH
+
+#path to OV terminal pager and set the pager env variable
+export PATH=$PATH:/path/to/ov
+export PAGER="ov"
