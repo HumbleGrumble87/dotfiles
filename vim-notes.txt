@@ -126,6 +126,7 @@ start linewise mode             = V
 start blockwise mode            = ctrl +v
 shift text                      = >
 
+vertical split                  = vim-
 
 
 

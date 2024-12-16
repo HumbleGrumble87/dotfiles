@@ -1,4 +1,5 @@
 --cuz it looks sick
+
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
@@ -9,5 +10,5 @@ return {
     opts = {
       colorscheme = "gruvbox",
     },
-  }
+  },
 }

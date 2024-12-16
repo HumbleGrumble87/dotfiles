@@ -169,19 +169,25 @@ shopt -s globstar
 #for access to +(! ) file globbing
 shopt -s extglob
 
+#this supposedly fixes highlighting of dirs on the windows side - ugly AF
+LS_COLORS=$LS_COLORS:'ow=1;34:'
+export LS_COLORS
+
+# PATHs
+#
 #for accessing scripts accross the system
 export PATH=$PATH:$HOME/scripts/
-
-#termial pager relies on golang
-export PATH=$PATH:/usr/local/go/bin
 
 #path to OV terminal pager and set the pager env variable
 export PATH=$PATH:/path/to/ov
 export PAGER="ov"
 
-#lazygit path for neovim
-export PATH=$PATH:$HOME/go/bin
+#paths for go
+export GOROOT=~/apps/go
+export GOPATH=~/go # Default user workspace outside of ~/apps
+export PATH=$PATH:~/apps/go/bin:$GOPATH/bin
 
-#this supposedly fixes highlighting of dirs on the windows side - ugly AF
-LS_COLORS=$LS_COLORS:'ow=1;34:'
-export LS_COLORS
+#path for lazygit, which relies on go
+export PATH=$PATH:~/apps/lazygit
+
+export PATH=~/apps/fzf/bin:$PATH
