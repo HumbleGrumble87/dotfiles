@@ -88,6 +88,9 @@ repeat last macro               = @@
 repeat last macro 20 time       = 20@a
 
 range of numbers                = :put=range(0,10,2)   from 0,10 going by 2's
+
+
+
  
 
 #mulicursor mode and COLUMNS
@@ -189,7 +192,15 @@ telescope and fzf - HELLA powerful for many things:
     <leader> + : can telescope your command history
 
 
+#Tabs
+set expandtab
+set noexpandtab
 
+set tabstop=8
+set tabstop=2 (this is default)
+
+set nolist      this will stop tab ">" chars from showing up
+set list
 
 
 
