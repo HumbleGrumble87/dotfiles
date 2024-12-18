@@ -72,6 +72,7 @@ replace/substitute pattern      = :%s/old/new/g
   \t        = horizontal tab
   \0        = reference from ()
 
+
   so the above line says "on each line, find the IP, and move to a newline with a tab, and paste the IP on said line"
 
 
