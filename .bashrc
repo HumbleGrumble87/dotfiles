@@ -137,7 +137,7 @@ NETWORK-JPG)
 esac
 
 alias vim="nvim"
-alias go='~/scripts/go.sh'
+alias gmg='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
@@ -169,9 +169,28 @@ shopt -s globstar
 #for access to +(! ) file globbing
 shopt -s extglob
 
-#for accessing scripts accross the system
-export PATH=$PATH:$HOME/scripts/
-
 #this supposedly fixes highlighting of dirs on the windows side - ugly AF
 LS_COLORS=$LS_COLORS:'ow=1;34:'
 export LS_COLORS
+
+# PATHs
+#
+#for accessing scripts accross the system
+export PATH=$PATH:$HOME/scripts/
+
+#for nvim
+export PATH="$HOME/apps/nvim/bin:$PATH"
+
+#paths for go
+export GOROOT=~/apps/go
+export GOPATH=~/go # Default user workspace outside of ~/apps
+export PATH=$PATH:~/apps/go/bin:$GOPATH/bin
+
+#path for lazygit, which relies on go
+export PATH=$PATH:~/apps/lazygit
+
+export PATH=~/apps/fzf/bin:$PATH
+
+#path to OV terminal pager and set the pager env variable
+export PATH=$PATH:/path/to/ov
+export PAGER="ov"
