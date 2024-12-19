@@ -137,7 +137,7 @@ NETWORK-JPG)
 esac
 
 alias vim="nvim"
-alias gmg='~/scripts/go.sh'
+alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
