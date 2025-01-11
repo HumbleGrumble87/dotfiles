@@ -139,6 +139,7 @@ esac
 alias vim="nvim"
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cm="cmatrix -a"
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
 alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
@@ -147,7 +148,6 @@ alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
-alias cm="cmatrix -a"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
