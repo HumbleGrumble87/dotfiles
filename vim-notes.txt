@@ -51,6 +51,7 @@ undo                            = u
 re-do                           = ctrl +r
 
 replace char until ESC pressed  = R
+
 rewrite line                    = cc
 
 repeat last command             = .
@@ -166,6 +167,7 @@ open new buffer
   must be named                 = :e filename
                                 = <leader> +f +n
 
+open last closed file           = :e#
 
 
 
@@ -180,9 +182,7 @@ nerdTree HELP                   = ? (must have tree open)
   delete file                   = d
   toggle hidden                 = H
 
-search files in current dir     = <leader> +f +f
-
-find files 
+Find Files in current dir     = <leader> +f +f
 
 telescope and fzf - HELLA powerful for many things:
   -jumplist

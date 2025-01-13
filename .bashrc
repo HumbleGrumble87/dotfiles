@@ -139,6 +139,7 @@ esac
 alias vim="nvim"
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias diff='diff --color'
 alias cm="cmatrix -a"
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
@@ -194,5 +195,5 @@ export PATH=$PATH:~/apps/lazygit
 export PATH=~/apps/fzf/bin:$PATH
 
 #path to OV terminal pager and set the pager env variable
-export PATH=$PATH:/path/to/ov
+export PATH=$PATH:/home/jimmy/apps/ov
 export PAGER="ov"
