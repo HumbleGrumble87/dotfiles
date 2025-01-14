@@ -149,6 +149,7 @@ alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
 alias cm="cmatrix -a"
 
+export HISTSIZE=100000
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
