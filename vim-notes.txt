@@ -6,7 +6,7 @@ change cwd = :cd _path_to_folder_
 
 
 #Help Docs
-To follow links within the :help documentation, use 'ctrl + ]' to follow the link and 'ctrl + t' to back out
+To follow links within the :help documentation, use 'ctrl + ]' or "shtf-k" to follow the link and 'ctrl + t' to back out
 The "holy grail" can be found by searching for it with ':help holy-grail'
 
 
@@ -75,6 +75,12 @@ replace/substitute pattern      = :%s/old/new/g
 
 
   so the above line says "on each line, find the IP, and move to a newline with a tab, and paste the IP on said line"
+
+[0-9] does not require forward slash
+\{} does require, but only on the first one, where as
+\(\) requires both slashes
+but if you use \v, then there are no slashes for either of the above
+this syntax differs from true SED syntax, where you'd need double slashes for \{\}
 
 
 search and replace plugin       = <leader> +s +r
