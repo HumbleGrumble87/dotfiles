@@ -152,6 +152,8 @@ alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
+git config --global core.editor "vim"
+
 export HISTSIZE=100000
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
