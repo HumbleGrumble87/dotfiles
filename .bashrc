@@ -139,6 +139,8 @@ esac
 alias vim="nvim"
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias diff='diff --color'
+alias cm="cmatrix -a"
 alias humble="cd /mnt/c/Users/humbl/"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
 alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
@@ -147,7 +149,8 @@ alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
-alias cm="cmatrix -a"
+
+cheatsh() { curl cheat.sh/"$1"; }
 
 export HISTSIZE=100000
 export bn="$HOME/bash-notes.txt"
@@ -193,5 +196,5 @@ export PATH=$PATH:~/apps/lazygit
 export PATH=~/apps/fzf/bin:$PATH
 
 #path to OV terminal pager and set the pager env variable
-export PATH=$PATH:/path/to/ov
+export PATH=$PATH:/home/jimmy/apps/ov
 export PAGER="ov"
