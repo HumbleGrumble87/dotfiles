@@ -153,6 +153,9 @@ alias ssh="ct ssh"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
+git config --global core.editor "vim"
+
+export HISTSIZE=100000
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
