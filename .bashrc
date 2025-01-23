@@ -200,3 +200,6 @@ export PATH=~/apps/fzf/bin:$PATH
 #path to OV terminal pager and set the pager env variable
 export PATH=$PATH:/home/jimmy/apps/ov
 export PAGER="ov"
+
+# Created by `pipx` on 2025-01-23 02:28:57
+export PATH="$PATH:$HOME/.local/bin"
