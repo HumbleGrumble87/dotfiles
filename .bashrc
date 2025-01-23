@@ -149,6 +149,7 @@ alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
+alias ssh="ct ssh"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
@@ -203,3 +204,9 @@ export PAGER="ov"
 
 # Created by `pipx` on 2025-01-23 02:28:57
 export PATH="$PATH:$HOME/.local/bin"
+=======
+#grc generic colorizer thing
+export PATH=$PATH:/home/jimmy/apps/grc-1.12/
+
+# Created by `pipx` on 2025-01-23 01:45:08 for chromaterm command 'ct'
+export PATH="$PATH:/home/jimmy/.local/bin"
