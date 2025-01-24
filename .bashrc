@@ -189,9 +189,8 @@ export PATH=$PATH:$HOME/scripts/
 export PATH="$HOME/apps/nvim/bin:$PATH"
 
 #paths for go
-export GOROOT=~/apps/go
-export GOPATH=~/go # Default user workspace outside of ~/apps
-export PATH=$PATH:~/apps/go/bin:$GOPATH/bin
+export GOPATH=~/apps/go/bin
+export PATH=$PATH:$GOPATH/bin
 
 #path for lazygit, which relies on go
 export PATH=$PATH:~/apps/lazygit
@@ -199,12 +198,12 @@ export PATH=$PATH:~/apps/lazygit
 export PATH=~/apps/fzf/bin:$PATH
 
 #path to OV terminal pager and set the pager env variable
-export PATH=$PATH:/home/jimmy/apps/ov
+export PATH="$PATH:/home/jimmy/apps/ov"
 export PAGER="ov"
 
 # Created by `pipx` on 2025-01-23 02:28:57
 export PATH="$PATH:$HOME/.local/bin"
-=======
+
 #grc generic colorizer thing
 export PATH=$PATH:/home/jimmy/apps/grc-1.12/
 
