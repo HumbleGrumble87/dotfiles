@@ -176,6 +176,10 @@ shopt -s globstar
 #for access to +(! ) file globbing
 shopt -s extglob
 
+#so i can use variables in prompt without bash escaping them form me
+#https://askubuntu.com/questions/70750/how-to-get-bash-to-stop-escaping-during-tab-completion
+shopt -u progcomp
+
 #this supposedly fixes highlighting of dirs on the windows side - ugly AF
 LS_COLORS=$LS_COLORS:'ow=1;34:'
 export LS_COLORS
