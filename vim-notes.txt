@@ -87,6 +87,7 @@ search and replace plugin       = <leader> +s +r
 
 "surround" via the "mini.surround" plugin - it's not the OG tpope plugin 
   -it doesn't use "ysiw", it uses "gsaiw"
+  -can also use visual mode and then a simple "gsa" instaed
   -prefer this to tpope for consisency
 
 start macro                     = qa
