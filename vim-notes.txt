@@ -98,6 +98,10 @@ repeat last macro 20 time       = 20@a
 
 range of numbers                = :put=range(0,10,2)   from 0,10 going by 2's
 
+OR
+
+visual mode                     = :!awk '{print NR,$0}'
+
 
 
  
