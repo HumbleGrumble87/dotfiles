@@ -1,0 +1,126 @@
+These are my bash notes
+
+
+
+Bash is a programming language
+
+  Dynamic/implicit langauge with a type system that resembles LISP; 
+
+  s-expressions: a list where 
+    first element is the function/command/program-to-execute
+    remaining elements are the arguments
+    https://www.celantur.com/blog/bash-type-system/
+
+  Like any language, keywords evoke special behavior
+  These include built-in programs like:
+    -cd
+    -echo
+    -type
+  But also special characters like 
+    -$
+    -(
+    -{
+  The specific special characters used for "file-globbing" are called *wildcards* 
+    they include '*' and '?' and '[..]'
+
+
+GETTING STARTED
+-----------------------------------------------------------------------------
+ls
+  changes its output depending on redirection
+  if printing to STDOUT (the screen), ls puts things into columns
+  if printing to a file, ls output goes line by line
+  never use 'ls' in a pipeline, always use 'find'
+
+find
+  syntax can be tricky
+  find [dir_path] -type {f,d} -iname [file/dir name, case Insensitive] -exec 'command to run on each file/dir here'
+    use quotes with -exec option so bash doesn't try to interpret and change anything before find gets it
+    see QUOTING section below
+
+wc
+  -l, -w -c for lines, words, and chars
+  best to feed wc from STDIN so you don't dirty the output
+    wc -l < test.txt
+
+head
+  head -n 1 file.txt
+  head -1 file.txt
+
+cut
+  gotta pick, -[f]ields or -[c]haracters
+  if you pick fields, you have to define a -[d]elimiter and are allowed to pick multiple fields
+  if characters, you cannot pick a delimiter and are encouraged to choose a range
+  cat test.txt | cut -d ',' -f 1,3      "cut on the commas and grab columns 1 and 3"
+  cat test.txt | cut -c 2-10            "cut based on characters and grab positions 2 thru 10"
+
+grep
+  grep [flags] 'expression' file/path/
+  case insensitive: -i
+  recursive: -r
+
+  grep for a word in all files with all folders and subfolders of a given directory
+    grep -r --exclude-dir='.?*' 'jimmy' .
+      says "find the word "jimmy" in any file under the current one '.' but exclude files within hidden directories
+      does the GLOB match the whole path, or just the specific base directory name?
+      matches the latter, otherwise trying to exclude hidden directories would be difficult
+      so GLOB above says "match all directories that start with a dot, are followed by at least 1 character, and are then followed by any number of characters or no char at all"
+
+sort
+  sort [flags] 
+
+  -t is delimiter (dumbass flag, like 't'? wtf? lol)
+  -k
+
+  ip addresses:
+    sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n
+    OR
+    sort -V
+
+uniq
+  pointless command when 'sort -u' exists
+
+
+
+
+
+QUOTING
+-----------------------------------------------------------------------------
+
+
+
+
+
+GLOBBING AND WILDCARDS
+-----------------------------------------------------------------------------
+-https://www.shell-tips.com/bash/wildcards-globbing/#gsc.tab=0
+There's only 3 wildcards, * + []
+.  is not a wildcard, which means "ls *.txt" will force a period before the extension, not fill it with any old shit
+Unlike normal regex, globbing has to match the WHOLE FILE or DIR.
+  so if you're looking for all march files in the form 18-03-2024
+  you have to do this: ls *-03-*
+  and can't get away with : -03-*    or    *-03-
+find command also uses this globbing syntax, not true regex syntax
+
+
+
+
+
+REDIRECTION and PIPING
+-----------------------------------------------------------------------------
+             0> files.txt     -stdin, idk what this would do though?
+cat test.txt 1> files.txt     -stdout 
+             2> files.txt     -stderr 
+             &> files.txt     -stdout AND stderr
+
+Giving a command a file vs providing it via STDIN produces different output:
+  wc -l animals.txt    vs    wc -l < animals.txt
+  this is because one is allowed to "read" the file while the other one is simply getting the file's output piped into STDIN
+
+
+
+
+
+
+
+history | tail -20 | grep
