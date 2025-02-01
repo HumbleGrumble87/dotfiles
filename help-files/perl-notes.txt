@@ -1,0 +1,250 @@
+Perl basics
+
+Sun Jan 23 15:05:13 EST 2005
+
+This is a small summary of a small part of an enormous language; it
+shows mostly the common things that I have trouble remembering, plus a
+few of the gotchas that still get me.  There is no way that one can
+summarize Perl compactly.  The Perl book is over 1000 pages.
+
+
+Program structure: ============================================
+
+A program starts with
+
+	#!/usr/local/bin/perl -w
+	use warnings; # run time
+	use strict;   # compile time
+	# rest of program
+
+This turns on a variety of warnings, detecting undefined and
+uninitialized variables.  Put this in a file whatever.pl
+(conventionally), chmod +x whatever.pl, and run it.
+
+Variables have a type:
+
+	$s is scalar
+	@a is array, indexed 0 .. $#a inclusive
+	%h is hash (associative array)
+	$a[$s] is scalar element of array
+	$h{$s} is scalar element of hash
+
+Declare variables with my, as in my $s or my($s, @a, %h).
+
+There are lots of predefined variables like $_ for variously the input
+line, the current target of operations, etc.  File handles are not
+declared, except by context in functions like open.
+
+Constants are sort of like C, but "..."  strings have their contents
+interpreted, expanding \'s, $'s, etc., while '...' strings are
+uninterpreted (as in sh).  Watch out for if (c eq '\t') ...
+
+This creates an array of 4 elements by spelling out the values:
+	my @map = ( "if", "for", "while", "else" );
+
+Relational operators are like C for numbers, but eq ne lt gt le ge for
+string comparison.
+
+If-elsif-else is different from C; while, for, do are similar to C.
+Braces are always required, even for a single controlled statement.
+There are a bunch of other ways to write control flow too, including
+
+	foreach $i (list) { ... }
+	foreach (list) {  $_ is the index  }
+
+Within a loop,
+	break as in C
+	next is like continue in C
+
+Functions are declared without arguments and can appear anywhere:
+
+	function foo() {
+		@_ is array of arguments that foo was called with
+		use $_[0], etc., to access the arguments
+	}
+
+
+Commandline arguments: =======================================
+
+echo, brute force:
+
+	for ($i = 0; $i <= $#ARGV; $i++) {
+		print $ARGV[$i] . ($i < $#ARGV ? " " : "\n");
+	}
+
+echo, implicit:
+
+	print "@ARGV\n";
+
+This is Perl as spoken by experts: the elements of the array are
+concatenated with intervening spaces when the array name is used
+in a list context (e.g., quoted string).
+
+
+Input and output: ====================================
+
+Input and output has some awk-like properties and lots of others too.
+The function open() handles opening of explicitly named files; STDIN,
+STDOUT and STDERR are open already.
+
+The cat command, with 1 or more args, opening/closing files explicitly:
+
+	my $i;
+	foreach $i (@ARGV) {
+		open(IN, $i) or die "can't open $i: $!";
+		while (<IN>) {
+	        	print $_;
+		}
+		close IN;
+	}
+
+Same thing, with everything done implicitly:
+
+	print <>;	# equivalent: print <ARGV>;
+
+This reads STDIN if no arguments are provided.
+
+Files are created with open() as well; the second argument is a 
+filename with a type indicator preprended: > for create or
+overwrite, >> for append, | for an output pipe, etc.
+
+This is the cp command, using read() to grab big chunks of input:
+
+	my $buf;
+	die "usage: cp f1 f2" unless $#ARGV == 1;
+	open(IN, $ARGV[0]) or die "can't open $ARGV[0]: $!";
+	open(OUT, ">" . $ARGV[1]) or die "can't open $ARGV[1]: $!";
+	while (read(IN, $buf, 8192)) {
+	        print OUT $buf;
+	}
+	close IN;
+	close OUT;
+
+
+Associative arrays: ===============================================
+
+The classic "add up name-value pairs" example:
+
+	my ($i, %val, $n, $v);
+	while (<>) {  # reads input a line at a time
+		($n, $v) = split;
+		$val{$n} += $v;
+	}
+	foreach $i (sort keys %val) {
+		print "$i\t$val{$i}\n";
+	}
+
+Alternatively, pipe the unsorted output into a command:
+
+	open(SORT, "|sort +1 -nr");
+	while (<>) {
+	     ($n, $v) = split;
+	     $val{$n} += $v;
+	}
+	foreach $i (keys %val) {
+	     print SORT "$i\t$val{$i}\n";
+	}
+
+	## while ( ($key, $value) = each(%table) ) {
+	    ## Do some processing on $key and $value
+	## }
+
+
+String manipulation: ====================================================
+
+	use sigtrap;
+	use Socket;
+
+	$, = ' ';  # FS or OFS?
+
+	my ($q, $stock, $x, $remote, $port, $iaddr, $paddr, $proto, $line);
+
+	$stock = shift || "LU+MSFT+T";
+	$remote = shift || 'quote.yahoo.com';
+	$port = 80;
+	$iaddr = inet_aton($remote);
+	$paddr = sockaddr_in($port, $iaddr);
+	$proto = getprotobyname('tcp');
+
+	# http://quote.yahoo.com/q?s=t+lu+msft&d=v1&o=t
+
+	$q = "/d/quotes.csv?s=$stock&f=s|1d1t1c1ohgv&e=.csv";
+	socket(SOCK, PF_INET, SOCK_STREAM, $proto) or die "socket: $!";
+	connect(SOCK, $paddr) or die "connect: $!";
+	$x = "GET $q HTTP/1.0\r\n\r\n";
+
+	syswrite(SOCK, $x, length($x));
+	$line = "";
+	while (<SOCK>) {
+		$line .= $_;  # concatenate input into one string
+	}
+	close(SOCK);
+
+
+Regular expressions: ====================================================
+
+Lots of regular expression operators:
+
+	$line =~ tr/[A-Z]/[a-z]/;	# translate to lower case
+	$line =~ s/<\/?[^>]+>//g;	# zap <...>
+	$line =~ s/\&\w+;//g;		# zap &nbsp; etc
+	$line =~ s/\n+/\n/g;		# coalesce blank lines
+
+Qualifiers include 
+	g	global -- everywhere
+	i	insensitive to case
+	e	execute embedded function calls
+
+Shorthands
+	\d = digit, \D = non-digit
+	\w = "word" [a-zA-Z0-9_], \W = non-word
+	\s = whitespace, \S = non-whitespace
+	\b = word boundary, \B = non-boundary
+
+Substrings
+	matched parts are saved for later use in $1, $2, ...
+		s/(\S+)\s+(\S+)/$2 $1/ swaps first two words
+
+Scalars, lists, arrays, etc. ==========================================
+
+There are lots of functions that work on scalars, arrays, lists,
+etc., and return various of those.  Many of these can be used in a
+kind of prefix operator style:  $s = join sort grep keys @a.
+
+	sort
+	keys
+	join
+	grep
+
+Use function notation with () if there's more than one argument.
+
+
+Gotchas and features: ===================================================
+
+This list could be infinite:
+
+	@Arr to define an array, but $Arr[$i] to reference an element
+		same for %hash, $hash{$i}
+	string comparisons:  eq not ==,  ne not !=, ? 
+	no interpretation of \ inside '...'
+		if ($c eq '\t')   doesn't match a tab
+	elsif, not else if
+	print ($i == $#ARGV) ? "\n" : " "
+		needs either extra outside parens or no parens; 
+		otherwise looks like a list, not a function
+	$#Arr is the index of last elem, starting at 0
+		not the number of elements
+	$Arr[$#Arr] is the last element
+	@chars = split(//, $line)  gives one char/element
+	if (defined($x)) needed if use strict
+	all lines in a single string:
+		my @in = <>; $str = join "", @in;
+	chop returns char chopped, not resulting string
+		chomp returns number of characters dropped!
+	foreach $i (%hash) is DIFFERENT from 
+	     foreach $i (keys %hash)
+	split(/pattern/, expr, limit)
+		returns list of at most limit fields separated by /pat/
+		note weird order of arguments
+
+

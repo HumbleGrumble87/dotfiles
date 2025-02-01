@@ -1,0 +1,77 @@
+These are my git notes
+
+Git was designed to be distributed - unlike other VCSs.
+  Unlike subversion (SVN) - git doesn't require complex client-server APIs (read/change/delete)
+  To enable this, the entire repo is downloaded by each user, not just individual files.
+  
+This distributed nature is the reason why git operations may seem more complex.
+  We need a staging area, we track "commits" instead of "individual file versions at certain times", etc etc
+
+The first area of git is the working directory. 
+  Git refers to the project folder and it's contents as the working directory.
+
+The second area is the repository.
+  This is the .git/ folder inside the working directory.
+  This subdir acts like a whimsical soul-link that remembers all versions of any file.
+
+The third and final area is the "index" or "staging area" 
+  This is not a directory, unlike above. And it does not store any files!!!
+  It merely tracks which version of the file the working tree is pointing to.
+  When we make the actual commit, the version/hash that the index is pointing at will be in the commit.
+
+Adding a file to the index does two things:
+  1) it updates that files entry in the index with the hash of the file in the working directory 
+  2) it copies the file into a blob object under .git/objects/
+
+This begs the question:
+  If i keep "git add"-ing a file because i keep tweaking it, and then make a commit,
+    aren't there many versions of the file in the repo/objects dir that are unreferenced by any commit?
+
+  The answer is yes! But the git garbage collection (git gc) process will clean these up over time!
+
+The three object types are blobs, trees, and commits and are very simple.
+  Blobs are just copied binary of a file, prefaced with "blob [char-count]\0", and stored by their sha1 hash value
+    ex.
+    jimmy@NETWORK-JPG ~
+    $ git hash-object test.txt
+    0ff4fb4d98e48709c77193e9ebdb9a9794d06dbb
+
+    jimmy@NETWORK-JPG ~
+    $ { echo -en "blob $(wc -c < test.txt)\0"; cat test.txt; } | sha1sum
+    0ff4fb4d98e48709c77193e9ebdb9a9794d06dbb  -
+
+  Trees are also binary files referenced by their sha1 hash, and the file contains:
+    1) the sha1 hash of other trees this tree points to
+    2) blobs
+
+  Commits are also binary files ref'd by sha1 and are very simple:
+    1) commit hash
+    2) parent commit hash
+    3) hash of source tree
+    4) date/author
+
+
+
+
+
+git init -b master
+
+git clone [URL] [what you want git to name the high-level folder]
+
+git add [file1, file2, etc]
+  stores file in repository
+  seems counter-intuitive because we haven't commited yet
+  but this is how git works
+
+git commit -m "message goes here"
+  -am is a good shortcut
+
+git fetch && git merge
+
+git reset 
+
+git revert
+
+git checkout -f
+
+git stash
