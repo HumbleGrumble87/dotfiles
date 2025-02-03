@@ -1,0 +1,9 @@
+[user]
+	name = humble grumble
+	email = humble@grumblejunction.io
+[core]
+	editor = vim
+[alias]
+	lg = log --oneline
+[safe]
+	directory = /usr/local/bin/neovim
