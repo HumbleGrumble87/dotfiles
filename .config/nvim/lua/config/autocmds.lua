@@ -13,4 +13,4 @@ vim.cmd([[ set path=.,~/,~/.config/, ]])
 vim.cmd([[ set path+=/mnt/c/Users/jpg/OneDrive\\\ -\\\ Northeast\\\ Communications\\\ of\\\ WI.\\\ Inc/ ]])
 
 --for home?
-vim.cmd([[ set path=~/help-files ]])
+vim.cmd([[ set path=~/brain ]])
