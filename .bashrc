@@ -213,3 +213,5 @@ export PATH=$PATH:/home/jimmy/apps/grc-1.12/
 
 # Created by `pipx` on 2025-01-23 01:45:08 for chromaterm command 'ct'
 export PATH="$PATH:/home/jimmy/.local/bin"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
