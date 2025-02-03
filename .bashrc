@@ -150,6 +150,7 @@ alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. 
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
 alias ssh="ct ssh"
+alias gr='grep -n'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
