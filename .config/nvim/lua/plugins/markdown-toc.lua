@@ -22,11 +22,11 @@ return {
       -- If cycle_markers = false and markers is a list, only the first is used.
       -- You can set to '1.' to use a automatically numbered list for ToC (if
       -- your markdown render supports it).
-      markers = "*",
-      cycle_markers = false,
+      -- markers = "*",
+      -- cycle_markers = false,
       -- Example config for cycling markers:
-      ----- markers = {'*', '+', '-'},
-      ----- cycle_markers = true,
+      markers = { "*", "+", "-" },
+      cycle_markers = true,
 
       -- Integer or a function that returns an integer.
       -- If function, it is called every time the ToC is regenerated. This allows the use
