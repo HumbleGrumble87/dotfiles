@@ -141,7 +141,8 @@ alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias diff='diff --color'
 alias cm="cmatrix -a"
-alias humble="cd /mnt/c/Users/humbl/"
+alias humble="cd /mnt/c/Users/humbl"
+alias jpg="cd /mnt/c/Users/jpg"
 alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
 alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
 alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/config"
@@ -216,3 +217,7 @@ export PATH=$PATH:/home/jimmy/apps/grc-1.12/
 export PATH="$PATH:/home/jimmy/.local/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/jpg
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
+export VAGRANT_DEFAULT_PROVIDER=hyperv

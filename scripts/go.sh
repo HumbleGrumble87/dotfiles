@@ -14,7 +14,8 @@
 # i name my sql queries sharedSessions-DATE.csv, update my plocateDB, grep for my sessions, sort them, take the most recent file (remember, they're DATED)
 # and save it as a variable 'most_recent_csv'
 # the query in question is commented out at the end of the script below.
-most_recent_csv="$(plocate 2025 | grep "sharedSessions/sharedSessions.*csv$" | sort -r | head -1)"
+#most_recent_csv="$(plocate 2025 | grep "sharedSessions/sharedSessions.*csv$" | sort -r | head -1)"
+most_recent_csv="$(find /home/jimmy/sharedSessions -type f -iname '*sessions*' | grep "sharedSessions/sharedSessions.*csv$" | sort -r | head -1)"
 # feel free to "echo $most_recent_csv" to t-shoot the script if needed
 
 # here i set a variable called host that utilizes fzf fuzzy finder to find device record based on device name/description
