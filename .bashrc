@@ -144,15 +144,15 @@ alias cm="cmatrix -a"
 alias brain="cd ~/brain"
 alias humble="cd /mnt/c/Users/humbl"
 alias jpg="cd /mnt/c/Users/jpg"
-alias notes="cd /mnt/c/Users/$user/Nextcloud/Notes"
 alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
 alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/config"
-alias nextcloud="cd /mnt/c/Users/$user/Nextcloud"
 alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
-alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
+alias turtles="vim /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/Notes/turtles.txt"
 alias ssh="ct ssh"
 alias gr='grep -n'
+alias notes="cd /mnt/c/Users/$user/OneDrive/Notes"
+alias onedrive="cd /mnt/c/Users/$user/OneDrive"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
