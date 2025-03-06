@@ -153,6 +153,7 @@ alias bashrc="source ~/.bashrc && echo bashrc sourced"
 alias turtles="vim /mnt/c/Users/humbl/Nextcloud/Notes/turtles.txt"
 alias ssh="ct ssh"
 alias gr='grep -n'
+alias tn='tmux new-session -s howdy'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
