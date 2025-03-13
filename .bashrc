@@ -137,6 +137,7 @@ NETWORK-JPG)
 esac
 
 alias vim="nvim"
+alias clear=''
 alias go='~/scripts/go.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias diff='diff --color'
@@ -152,8 +153,15 @@ alias turtles="vim /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. 
 alias ssh="ct ssh"
 alias gr='grep -n'
 alias tn='tmux new-session -s howdy'
+alias tls='tmux ls'
+alias ta='tmux attach'
 alias notes="cd /mnt/c/Users/$user/OneDrive/Notes"
 alias onedrive="cd /mnt/c/Users/$user/OneDrive"
+alias gs='git status'
+alias gc='git commit -am'
+alias gf='git fetch'
+alias gm='git merge'
+alias gl='git log'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
