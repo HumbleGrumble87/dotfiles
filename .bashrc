@@ -164,6 +164,7 @@ alias gp='git push'
 alias gf='git fetch'
 alias gm='git merge'
 alias gl='git log'
+alias dc='docker compose'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
