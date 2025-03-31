@@ -155,6 +155,7 @@ alias gr='grep -n'
 alias tn='tmux new-session -s howdy'
 alias tls='tmux ls'
 alias ta='tmux attach'
+alias tks='tmux kill-server'
 alias notes="cd /mnt/c/Users/$user/OneDrive/Notes"
 alias onedrive="cd /mnt/c/Users/$user/OneDrive"
 alias gs='git status'
