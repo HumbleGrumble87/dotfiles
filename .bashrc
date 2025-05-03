@@ -138,7 +138,8 @@ esac
 
 alias vim="nvim"
 alias clear=''
-alias go='~/scripts/go.sh'
+alias go='~/scripts/northgo.sh'
+alias nogo='~/scripts/nogo.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias diff='diff --color'
 alias cm="cmatrix -a"
