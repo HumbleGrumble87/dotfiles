@@ -31,5 +31,5 @@ address=$(echo $host | grep -ohE "^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}")
 
 # profit
 
-ct sshpass -p "Blaster94" ssh "jpg@${address}"
+ct sshpass -p "Suzuki94" ssh "jpg@${address}"
 #echo $address

@@ -1,1 +1,8 @@
-return { "neovim/nvim-lspconfig", enabled = false }
+return {
+  "neovim/nvim-lspconfig",
+  opts = {
+    servers = {
+      marksman = {},
+    },
+  },
+}
