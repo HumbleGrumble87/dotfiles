@@ -167,6 +167,7 @@ alias gf='git fetch'
 alias gm='git merge'
 alias gl='git log'
 alias dc='docker compose'
+alias bat='batcat'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
