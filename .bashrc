@@ -168,6 +168,8 @@ alias gm='git merge'
 alias gl='git log'
 alias dc='docker compose'
 alias bat='batcat'
+alias ims1='ssh jgaffney@10.46.0.6'
+alias ims2='ssh jgaffney@10.46.0.7'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
