@@ -168,6 +168,9 @@ alias gm='git merge'
 alias gl='git log'
 alias dc='docker compose'
 alias bat='batcat'
+alias today="source ~/.bashrc && vim ~/brain/daily/$to_day"
+alias yest="source ~/.bashrc && vim ~/brain/daily/$yester_day"
+alias tmrw="source ~/.bashrc && vim ~/brain/daily/$to_morrow"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
@@ -183,7 +186,9 @@ export cn="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc/confi
 export nc="/mnt/c/Users/$user/Nextcloud"
 export od="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc"
 #for quickly creating/editing notes for the day
-today=$(date +'%m-%d-%Y')
+export to_day=$(date +'%m-%d-%Y')
+export yester_day=$(date -d "yesterday" +'%m-%d-%Y')
+export to_morrow=$(date -d "tomorrow" +'%m-%d-%Y')
 
 #make prompt look clean and put directories on their own line so when you use laptop, the prompt isn't halfway across the page already
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
