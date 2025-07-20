@@ -171,6 +171,8 @@ alias bat='batcat'
 alias today="source ~/.bashrc && vim ~/brain/daily/$to_day"
 alias yest="source ~/.bashrc && vim ~/brain/daily/$yester_day"
 alias tmrw="source ~/.bashrc && vim ~/brain/daily/$to_morrow"
+alias ims1='ssh jgaffney@10.46.0.6'
+alias ims2='ssh jgaffney@10.46.0.7'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
