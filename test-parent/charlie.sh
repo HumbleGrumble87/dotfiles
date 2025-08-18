@@ -1,3 +1,0 @@
-linux
-the
-line
