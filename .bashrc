@@ -209,38 +209,44 @@ shopt -u progcomp
 LS_COLORS=$LS_COLORS:'ow=1;34:'
 export LS_COLORS
 
-# PATHs
-#
-#for accessing scripts accross the system
-export PATH=$PATH:$HOME/scripts/
+##### PATHs (clean) #####
 
-#for nvim
-export PATH="$HOME/apps/nvim/bin:$PATH"
+# Prefer our custom tools first
+export PATH="$HOME/apps/bin:$PATH"
 
-#paths for go
-export GOPATH=~/apps/go/bin
-export PATH=$PATH:$GOPATH/bin
+# Neovim (installed under ~/apps/nvim)
+# (symlink already in ~/apps/bin, this is optional)
+# export PATH="$HOME/apps/nvim/bin:$PATH"
 
-#path for lazygit, which relies on go
-export PATH=$PATH:~/apps/lazygit
+# Go toolchain (installed under ~/apps/go)
+export PATH="$HOME/apps/go/bin:$PATH"
 
-export PATH=~/apps/fzf/bin:$PATH
+# Go workspace (user-installed Go tools via `go install`)
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+# fzf (built under ~/apps/fzf); optional because of symlink
+# export PATH="$HOME/apps/fzf/bin:$PATH"
+
+# lazygit (built under ~/apps/lazygit); optional because of symlink
+# export PATH="$HOME/apps/lazygit/bin:$PATH"
 
 #path to OV terminal pager and set the pager env variable
-export PATH="$PATH:/home/jimmy/apps/ov"
+export PATH="$PATH:~/apps/ov"
 export PAGER="ov"
 
 # Created by `pipx` on 2025-01-23 02:28:57
 export PATH="$PATH:$HOME/.local/bin"
 
 #grc generic colorizer thing
-export PATH=$PATH:/home/jimmy/apps/grc-1.12/
+export PATH=$PATH:~/apps/grc-1.12/
 
 # Created by `pipx` on 2025-01-23 01:45:08 for chromaterm command 'ct'
-export PATH="$PATH:/home/jimmy/.local/bin"
+export PATH="$PATH:~/.local/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/jpg
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export VAGRANT_DEFAULT_PROVIDER=hyperv
+. "$HOME/.cargo/env"
