@@ -249,4 +249,4 @@ export PATH="$PATH:~/.local/bin"
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/jpg
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export VAGRANT_DEFAULT_PROVIDER=hyperv
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
