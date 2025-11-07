@@ -130,11 +130,16 @@ EVELYN)
 Ishmael)
   export user=humbl
   ;;
-NETWORK-JPG)
-  export user=jimmy
+GO001LAP215619)
+  export user=james.gaffney
   ;;
 
 esac
+
+#for quickly creating/editing notes for the day
+export to_day=$(date +'%m-%d-%Y')
+export yester_day=$(date -d "yesterday" +'%m-%d-%Y')
+export to_morrow=$(date -d "tomorrow" +'%m-%d-%Y')
 
 alias vim="nvim"
 alias clear=''
@@ -145,20 +150,20 @@ alias diff='diff --color'
 alias cm="cmatrix -a"
 alias brain="cd ~/brain"
 alias humble="cd /mnt/c/Users/humbl"
-alias jpg="cd /mnt/c/Users/jpg"
-alias work-notes="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/work-notes"
-alias config="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/config"
-alias onedrive="cd /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'"
+alias jpg="cd /mnt/c/Users/james.gaffney"
+# alias work-notes="cd /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'/work-notes"
+# alias config="cd /mnt/c/Users/jpg/'OneDrive - Shoptikal LLC'/config"
+# alias onedrive="cd /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'"
 alias bashrc="source ~/.bashrc && echo bashrc sourced"
-alias turtles="vim /mnt/c/Users/jpg/'OneDrive - Northeast Communications of WI. Inc'/Notes/turtles.txt"
+alias turtles="vim /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'/work-notes/turtles.txt"
 alias ssh="ct ssh"
 alias gr='grep -n'
 alias tn='tmux new-session -s howdy'
 alias tls='tmux ls'
 alias ta='tmux attach'
 alias tks='tmux kill-server'
-alias notes="cd /mnt/c/Users/$user/OneDrive/Notes"
-alias onedrive="cd /mnt/c/Users/$user/OneDrive"
+alias notes="cd /mnt/c/Users/$user/'OneDrive - Shoptikal LLC'/notes"
+alias onedrive="cd /mnt/c/Users/$user/'OneDrive - Shoptikal LLC'"
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit -am'
@@ -168,11 +173,14 @@ alias gm='git merge'
 alias gl='git log'
 alias dc='docker compose'
 alias bat='batcat'
-alias today="source ~/.bashrc && vim ~/brain/daily/$to_day"
-alias yest="source ~/.bashrc && vim ~/brain/daily/$yester_day"
-alias tmrw="source ~/.bashrc && vim ~/brain/daily/$to_morrow"
+alias today="source ~/.bashrc && vim ~/brain/daily/$to_day.md"
+alias yest="source ~/.bashrc && vim ~/brain/daily/$yester_day.md"
+alias tmrw="source ~/.bashrc && vim ~/brain/daily/$to_morrow.md"
 alias ims1='ssh jgaffney@10.46.0.6'
 alias ims2='ssh jgaffney@10.46.0.7'
+alias ipam="ct sshpass -p 'Jwe:KoF<J~2N?i&r' ssh jgaffney@10.65.13.86"
+alias hub="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.65.14.1"
+alias hq="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.90.1.247"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
@@ -183,14 +191,10 @@ export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
 export nt="/mnt/c/Users/$user/Nextcloud/Notes"
-export wn="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc/work-notes"
-export cn="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc/config"
+export wn="/mnt/c/Users/james.gaffney/OneDrive - Shoptikal LLC/work-notes"
+export cn="/mnt/c/Users/james.gaffney/OneDrive - Shoptikal LLC/config"
 export nc="/mnt/c/Users/$user/Nextcloud"
-export od="/mnt/c/Users/jpg/OneDrive - Northeast Communications of WI. Inc"
-#for quickly creating/editing notes for the day
-export to_day=$(date +'%m-%d-%Y')
-export yester_day=$(date -d "yesterday" +'%m-%d-%Y')
-export to_morrow=$(date -d "tomorrow" +'%m-%d-%Y')
+export od="/mnt/c/Users/james.gaffney/OneDrive - Shoptikal LLC"
 
 #make prompt look clean and put directories on their own line so when you use laptop, the prompt isn't halfway across the page already
 PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
@@ -209,38 +213,44 @@ shopt -u progcomp
 LS_COLORS=$LS_COLORS:'ow=1;34:'
 export LS_COLORS
 
-# PATHs
-#
-#for accessing scripts accross the system
-export PATH=$PATH:$HOME/scripts/
+##### PATHs (clean) #####
 
-#for nvim
-export PATH="$HOME/apps/nvim/bin:$PATH"
+# Prefer our custom tools first
+export PATH="$HOME/apps/bin:$PATH"
 
-#paths for go
-export GOPATH=~/apps/go/bin
-export PATH=$PATH:$GOPATH/bin
+# Neovim (installed under ~/apps/nvim)
+# (symlink already in ~/apps/bin, this is optional)
+# export PATH="$HOME/apps/nvim/bin:$PATH"
 
-#path for lazygit, which relies on go
-export PATH=$PATH:~/apps/lazygit
+# Go toolchain (installed under ~/apps/go)
+export PATH="$HOME/apps/go/bin:$PATH"
 
-export PATH=~/apps/fzf/bin:$PATH
+# Go workspace (user-installed Go tools via `go install`)
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+# fzf (built under ~/apps/fzf); optional because of symlink
+# export PATH="$HOME/apps/fzf/bin:$PATH"
+
+# lazygit (built under ~/apps/lazygit); optional because of symlink
+# export PATH="$HOME/apps/lazygit/bin:$PATH"
 
 #path to OV terminal pager and set the pager env variable
-export PATH="$PATH:/home/jimmy/apps/ov"
+export PATH="$PATH:~/apps/ov"
 export PAGER="ov"
 
 # Created by `pipx` on 2025-01-23 02:28:57
 export PATH="$PATH:$HOME/.local/bin"
 
 #grc generic colorizer thing
-export PATH=$PATH:/home/jimmy/apps/grc-1.12/
+export PATH=$PATH:~/apps/grc-1.12/
 
 # Created by `pipx` on 2025-01-23 01:45:08 for chromaterm command 'ct'
-export PATH="$PATH:/home/jimmy/.local/bin"
+export PATH="$PATH:~/.local/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/jpg
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export VAGRANT_DEFAULT_PROVIDER=hyperv
+. "$HOME/.cargo/env"
