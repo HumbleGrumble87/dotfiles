@@ -2,7 +2,7 @@
 
 return {
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     version = "*",
     enabled = true, -- Start with the plugin enabled
     lazy = false,

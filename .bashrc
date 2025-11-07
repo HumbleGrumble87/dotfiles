@@ -150,7 +150,7 @@ alias diff='diff --color'
 alias cm="cmatrix -a"
 alias brain="cd ~/brain"
 alias humble="cd /mnt/c/Users/humbl"
-alias jpg="cd /mnt/c/Users/jpg"
+alias jpg="cd /mnt/c/Users/james.gaffney"
 # alias work-notes="cd /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'/work-notes"
 # alias config="cd /mnt/c/Users/jpg/'OneDrive - Shoptikal LLC'/config"
 # alias onedrive="cd /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'"
@@ -178,6 +178,9 @@ alias yest="source ~/.bashrc && vim ~/brain/daily/$yester_day.md"
 alias tmrw="source ~/.bashrc && vim ~/brain/daily/$to_morrow.md"
 alias ims1='ssh jgaffney@10.46.0.6'
 alias ims2='ssh jgaffney@10.46.0.7'
+alias ipam="ct sshpass -p 'Jwe:KoF<J~2N?i&r' ssh jgaffney@10.65.13.86"
+alias hub="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.65.14.1"
+alias hq="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.90.1.247"
 
 cheatsh() { curl cheat.sh/"$1"; }
 
