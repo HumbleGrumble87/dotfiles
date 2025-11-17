@@ -181,6 +181,7 @@ alias ims2='ssh jgaffney@10.46.0.7'
 alias ipam="ct sshpass -p 'Jwe:KoF<J~2N?i&r' ssh jgaffney@10.65.13.86"
 alias hub="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.65.14.1"
 alias hq="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.90.1.247"
+alias skoping='~/scripts/sko_tunnels.sh'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
@@ -253,4 +254,9 @@ export PATH="$PATH:~/.local/bin"
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/jpg
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export VAGRANT_DEFAULT_PROVIDER=hyperv
-. "$HOME/.cargo/env"
+
+# Load Rust environment only if Rust is installed
+if command -v rustc >/dev/null 2>&1; then
+  # rustup environment (if present)
+  [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+fi
