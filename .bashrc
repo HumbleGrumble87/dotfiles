@@ -230,7 +230,7 @@ export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # fzf (built under ~/apps/fzf); optional because of symlink
-# export PATH="$HOME/apps/fzf/bin:$PATH"
+export PATH="$HOME/apps/fzf/bin:$PATH"
 
 # lazygit (built under ~/apps/lazygit); optional because of symlink
 # export PATH="$HOME/apps/lazygit/bin:$PATH"
@@ -253,4 +253,9 @@ export PATH="$PATH:~/.local/bin"
 export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH=/mnt/c/Users/jpg
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
 export VAGRANT_DEFAULT_PROVIDER=hyperv
-. "$HOME/.cargo/env"
+
+# idk
+# # Rust (cargo) env – only if installed
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
