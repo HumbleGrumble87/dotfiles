@@ -150,7 +150,6 @@ alias diff='diff --color'
 alias cm="cmatrix -a"
 alias brain="cd ~/brain"
 alias humble="cd /mnt/c/Users/humbl"
-alias jpg="cd /mnt/c/Users/james.gaffney"
 # alias work-notes="cd /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'/work-notes"
 # alias config="cd /mnt/c/Users/jpg/'OneDrive - Shoptikal LLC'/config"
 # alias onedrive="cd /mnt/c/Users/james.gaffney/'OneDrive - Shoptikal LLC'"
@@ -188,6 +187,7 @@ cheatsh() { curl cheat.sh/"$1"; }
 git config --global core.editor "vim"
 
 export HISTSIZE=100000
+export jpg="/mnt/c/Users/james.gaffney"
 export bn="$HOME/bash-notes.txt"
 export tn="$HOME/tmux-notes.txt"
 export vn="$HOME/vim-notes.txt"
