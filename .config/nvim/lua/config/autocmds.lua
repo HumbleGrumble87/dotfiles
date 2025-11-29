@@ -9,8 +9,10 @@
 
 vim.cmd([[ set path+=.,~/,~/.config/, ]])
 
---for work
-vim.cmd([[ set path+=/mnt/c/Users/jpg/OneDrive\\\ -\\\ Northeast\\\ Communications\\\ of\\\ WI.\\\ Inc/ ]])
+-- for work
+-- vim.cmd([[ set path+=/mnt/c/Users/jpg/OneDrive\\\ -\\\ Northeast\\\ Communications\\\ of\\\ WI.\\\ Inc/ ]])
+vim.cmd([[ set path+=/mnt/c/Users/james.gaffney/OneDrive\\\ -\\\ Shoptikal\\\ LLC/ ]])
+vim.cmd([[ set path+=/mnt/c/Users/james.gaffney/ ]])
 
---for home?
+-- for home?
 vim.cmd([[ set path+=~/brain ]])
