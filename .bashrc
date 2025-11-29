@@ -231,7 +231,7 @@ export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # fzf (built under ~/apps/fzf); optional because of symlink
-# export PATH="$HOME/apps/fzf/bin:$PATH"
+export PATH="$HOME/apps/fzf/bin:$PATH"
 
 # lazygit (built under ~/apps/lazygit); optional because of symlink
 # export PATH="$HOME/apps/lazygit/bin:$PATH"
