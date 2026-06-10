@@ -179,8 +179,13 @@ alias ims1='ssh jgaffney@10.46.0.6'
 alias ims2='ssh jgaffney@10.46.0.7'
 alias ipam="ct sshpass -p 'Jwe:KoF<J~2N?i&r' ssh jgaffney@10.65.13.86"
 alias hub="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.65.14.1"
-alias hq="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.90.1.247"
+alias hq="ct sshpass -p 'o28m6+JNHY7h7\$3%v^HpQ@%w' ssh admin@10.67.0.1"
 alias skoping='~/scripts/sko_tunnels.sh'
+alias validate='python3 validate.py'
+alias pi='ssh -l jimmy 10.67.1.63'
+alias fgt1='ssh -l admin 192.168.99.101'
+alias fgt2='ssh -l admin 192.168.99.102'
+alias fgt3='ssh -l admin 192.168.99.103'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
