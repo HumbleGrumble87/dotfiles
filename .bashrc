@@ -186,6 +186,7 @@ alias pi='ssh -l jimmy 10.67.1.63'
 alias fgt1='ssh -l admin 192.168.99.101'
 alias fgt2='ssh -l admin 192.168.99.102'
 alias fgt3='ssh -l admin 192.168.99.103'
+alias hostname='hostname -f'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
