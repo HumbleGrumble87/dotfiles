@@ -227,7 +227,7 @@ export PATH="$HOME/apps/bin:$PATH"
 
 # Neovim (installed under ~/apps/nvim)
 # (symlink already in ~/apps/bin, this is optional)
-# export PATH="$HOME/apps/nvim/bin:$PATH"
+export PATH="$HOME/apps/nvim/bin:$PATH"
 
 # Go toolchain (installed under ~/apps/go)
 export PATH="$HOME/apps/go/bin:$PATH"
