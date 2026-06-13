@@ -1,0 +1,1 @@
+*/30 * * * * /home/jimmy/scripts/check-tmux-log-size.sh >/tmp/check-tmux-log-size.log 2>&1
