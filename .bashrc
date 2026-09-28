@@ -187,6 +187,7 @@ alias fgt1='ssh -l admin 192.168.99.101'
 alias fgt2='ssh -l admin 192.168.99.102'
 alias fgt3='ssh -l admin 192.168.99.103'
 alias hostname='hostname -f'
+alias dcconsole='ssh -t root@67.53.150.78'
 
 cheatsh() { curl cheat.sh/"$1"; }
 
@@ -266,3 +267,4 @@ if command -v rustc >/dev/null 2>&1; then
   # rustup environment (if present)
   [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 fi
+. "$HOME/.cargo/env"

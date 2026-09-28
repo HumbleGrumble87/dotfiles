@@ -3,6 +3,7 @@
 	email = humble@grumblejunction.io
 [core]
 	editor = vim
+	pager = less
 [alias]
 	lg = log --oneline
 [safe]
