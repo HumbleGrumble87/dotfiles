@@ -148,6 +148,7 @@ alias nogo='~/scripts/nogo.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotclaude='cd ~ && GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME claude'
 alias tutor='claude --permission-mode plan --append-system-prompt "$(cat ~/.claude/tutor.md)"'
+alias how='claude -p --append-system-prompt "Answer as a tutor: give the exact command, explain it in a few lines."'
 alias diff='diff --color'
 alias cm="cmatrix -a"
 alias brain="cd ~/brain"
