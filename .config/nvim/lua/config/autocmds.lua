@@ -16,3 +16,11 @@ vim.cmd([[ set path+=/mnt/c/Users/james.gaffney/ ]])
 
 -- for home?
 vim.cmd([[ set path+=~/brain ]])
+
+-- bring up help docs as listed buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  callback = function()
+    vim.bo.buflisted = true
+  end,
+})
