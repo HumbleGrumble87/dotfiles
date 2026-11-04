@@ -147,6 +147,7 @@ alias go='~/scripts/northgo.sh'
 alias nogo='~/scripts/nogo.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotclaude='cd ~ && GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME claude'
+alias tutor='claude --permission-mode plan --append-system-prompt "$(cat ~/.claude/tutor.md)"'
 alias diff='diff --color'
 alias cm="cmatrix -a"
 alias brain="cd ~/brain"
